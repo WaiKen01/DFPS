@@ -43,7 +43,7 @@ namespace DFPS
             var retrievedSecretBytes = AESEncryption.DecryptByte(retrievedCipherBytes, pass);
             if (retrievedHash != SHA256Hash.generateHash(retrievedSecretBytes)) throw new Exception("File has been modified");
 
-            string secretFile = Path.Combine(destinationPath, stegoFile.Name);
+            string secretFile = Path.Combine(destinationPath, Path.ChangeExtension(stegoFile.Name, hiddenFileType));
             File.WriteAllBytes(stegoFile.FullName, retrievedSecretBytes);
         }
 
