@@ -31,13 +31,13 @@ namespace DFPS
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(homeForm));
             this.panel4 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.txtEncryption = new System.Windows.Forms.TextBox();
+            this.lblEncrypt = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -47,26 +47,24 @@ namespace DFPS
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.panel4.Controls.Add(this.textBox1);
+            this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.label4);
             this.panel4.Location = new System.Drawing.Point(26, 163);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(708, 133);
             this.panel4.TabIndex = 7;
             // 
-            // textBox1
+            // label1
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.ForeColor = System.Drawing.Color.White;
-            this.textBox1.Location = new System.Drawing.Point(0, 37);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(699, 96);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.Text = resources.GetString("textBox1.Text");
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(0, 37);
+            this.label1.MaximumSize = new System.Drawing.Size(699, 96);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(694, 69);
+            this.label1.TabIndex = 2;
+            this.label1.Text = resources.GetString("label1.Text");
             // 
             // label4
             // 
@@ -82,26 +80,24 @@ namespace DFPS
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.panel5.Controls.Add(this.textBox2);
+            this.panel5.Controls.Add(this.label3);
             this.panel5.Controls.Add(this.label5);
             this.panel5.Location = new System.Drawing.Point(26, 320);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(708, 133);
             this.panel5.TabIndex = 8;
             // 
-            // textBox2
+            // label3
             // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.textBox2.ForeColor = System.Drawing.Color.White;
-            this.textBox2.Location = new System.Drawing.Point(3, 34);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(699, 96);
-            this.textBox2.TabIndex = 3;
-            this.textBox2.Text = resources.GetString("textBox2.Text");
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(0, 37);
+            this.label3.MaximumSize = new System.Drawing.Size(699, 96);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(692, 92);
+            this.label3.TabIndex = 3;
+            this.label3.Text = resources.GetString("label3.Text");
             // 
             // label5
             // 
@@ -117,26 +113,23 @@ namespace DFPS
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.panel3.Controls.Add(this.txtEncryption);
+            this.panel3.Controls.Add(this.lblEncrypt);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Location = new System.Drawing.Point(26, 1);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(708, 133);
             this.panel3.TabIndex = 9;
             // 
-            // txtEncryption
+            // lblEncrypt
             // 
-            this.txtEncryption.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.txtEncryption.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtEncryption.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.txtEncryption.ForeColor = System.Drawing.Color.White;
-            this.txtEncryption.Location = new System.Drawing.Point(0, 37);
-            this.txtEncryption.Multiline = true;
-            this.txtEncryption.Name = "txtEncryption";
-            this.txtEncryption.ReadOnly = true;
-            this.txtEncryption.Size = new System.Drawing.Size(699, 96);
-            this.txtEncryption.TabIndex = 1;
-            this.txtEncryption.Text = resources.GetString("txtEncryption.Text");
+            this.lblEncrypt.AutoSize = true;
+            this.lblEncrypt.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblEncrypt.ForeColor = System.Drawing.Color.White;
+            this.lblEncrypt.Location = new System.Drawing.Point(0, 37);
+            this.lblEncrypt.Name = "lblEncrypt";
+            this.lblEncrypt.Size = new System.Drawing.Size(576, 69);
+            this.lblEncrypt.TabIndex = 1;
+            this.lblEncrypt.Text = resources.GetString("lblEncrypt.Text");
             // 
             // label2
             // 
@@ -179,8 +172,8 @@ namespace DFPS
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtEncryption;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblEncrypt;
     }
 }
