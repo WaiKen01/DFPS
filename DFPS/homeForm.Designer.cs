@@ -31,10 +31,10 @@ namespace DFPS
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(homeForm));
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblStegno = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblCompress = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblEncrypt = new System.Windows.Forms.Label();
@@ -47,24 +47,24 @@ namespace DFPS
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.panel4.Controls.Add(this.label1);
+            this.panel4.Controls.Add(this.lblStegno);
             this.panel4.Controls.Add(this.label4);
             this.panel4.Location = new System.Drawing.Point(26, 163);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(708, 133);
             this.panel4.TabIndex = 7;
             // 
-            // label1
+            // lblStegno
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(0, 37);
-            this.label1.MaximumSize = new System.Drawing.Size(699, 96);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(694, 69);
-            this.label1.TabIndex = 2;
-            this.label1.Text = resources.GetString("label1.Text");
+            this.lblStegno.AutoSize = true;
+            this.lblStegno.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblStegno.ForeColor = System.Drawing.Color.White;
+            this.lblStegno.Location = new System.Drawing.Point(0, 37);
+            this.lblStegno.MaximumSize = new System.Drawing.Size(699, 96);
+            this.lblStegno.Name = "lblStegno";
+            this.lblStegno.Size = new System.Drawing.Size(694, 69);
+            this.lblStegno.TabIndex = 2;
+            this.lblStegno.Text = resources.GetString("lblStegno.Text");
             // 
             // label4
             // 
@@ -80,24 +80,24 @@ namespace DFPS
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
-            this.panel5.Controls.Add(this.label3);
+            this.panel5.Controls.Add(this.lblCompress);
             this.panel5.Controls.Add(this.label5);
             this.panel5.Location = new System.Drawing.Point(26, 320);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(708, 133);
             this.panel5.TabIndex = 8;
             // 
-            // label3
+            // lblCompress
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(0, 37);
-            this.label3.MaximumSize = new System.Drawing.Size(699, 96);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(692, 92);
-            this.label3.TabIndex = 3;
-            this.label3.Text = resources.GetString("label3.Text");
+            this.lblCompress.AutoSize = true;
+            this.lblCompress.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lblCompress.ForeColor = System.Drawing.Color.White;
+            this.lblCompress.Location = new System.Drawing.Point(0, 37);
+            this.lblCompress.MaximumSize = new System.Drawing.Size(699, 96);
+            this.lblCompress.Name = "lblCompress";
+            this.lblCompress.Size = new System.Drawing.Size(692, 92);
+            this.lblCompress.TabIndex = 3;
+            this.lblCompress.Text = resources.GetString("lblCompress.Text");
             // 
             // label5
             // 
@@ -172,8 +172,8 @@ namespace DFPS
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblStegno;
+        private System.Windows.Forms.Label lblCompress;
         private System.Windows.Forms.Label lblEncrypt;
     }
 }
