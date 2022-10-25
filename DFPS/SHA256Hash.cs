@@ -31,9 +31,9 @@ namespace DFPS
         public static byte[] Hash(byte[] pass, byte[] salt)
         {
             byte[] saltedValue = pass.Concat(salt).ToArray();
-            using (SHA256 sha256Hash = SHA256.Create())
+            using (SHA256 sha256 = SHA256.Create())
             {
-                return sha256Hash.ComputeHash(saltedValue);
+                return sha256.ComputeHash(saltedValue);
             }
         }
 

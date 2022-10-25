@@ -75,15 +75,15 @@ namespace DFPS
             string messageTitle = "";
             string message = "";
 
-            if (!validatePassowrd())
+            if (!FormValidation.validatePassword(txtPassword.Text.Trim(),txtConPassword.Text.Trim()))
             {
                 message += "Password and Confirm Password don't match." + System.Environment.NewLine;
             }
-            if (!validateDestination())
+            if (!FormValidation.validateDestination(txtDestination.Text))
             {
                 message += "Invalid destination. Please select an existed directory." + System.Environment.NewLine;
             }
-            if (!validateFileExisted())
+            if (!FormValidation.validateFileExisted(txtFilePath.Text))
             {
                 message += "Invalid file. Please select an existed file." + System.Environment.NewLine;
             }
@@ -118,20 +118,6 @@ namespace DFPS
                     DFPS.DFPSMessageBox.ShowBox(messageTitle, message, false);
                 }
             }
-        }
-
-        private bool validatePassowrd()
-        {
-            return txtPassword.Text == txtConPassword.Text;
-        }
-
-        private bool validateDestination()
-        {
-            return System.IO.Directory.Exists(txtDestination.Text) && txtDestination.Text != "";
-        }
-        private bool validateFileExisted()
-        {
-            return System.IO.File.Exists(txtFilePath.Text) && txtDestination.Text != "";
         }
 
         private void clearForm()

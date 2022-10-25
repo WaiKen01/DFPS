@@ -87,15 +87,23 @@ namespace DFPS
                 FileInfo file = new FileInfo(txtFilePath.Text);
                 string pass = txtPassword.Text;
                 string destPath = txtDestination.Text;
-                AESEncryption.Decrypt(pass, file, destPath);
-                if (!checkRemain.Checked)
+                if(AESEncryption.Decrypt(pass, file, destPath))
                 {
-                    File.Delete(file.FullName);
+                    if (!checkRemain.Checked)
+                    {
+                        File.Delete(file.FullName);
+                    }
+                    messageTitle = "Successful Decrypted";
+                    message = "File has been successfully decrypted. Please check your file at " + destPath + "folder";
+                    clearForm();
+                    DFPS.DFPSMessageBox.ShowBox(messageTitle, message, true);
                 }
-                messageTitle = "Successful Decrypted";
-                message = "File has been successfully decrypted. Please check your file at " + destPath + "folder";
-                clearForm();
-                DFPS.DFPSMessageBox.ShowBox(messageTitle, message, true);
+                else
+                {
+                    messageTitle = "Failed Decryption.";
+                    message = "File has not been decrypted. Please try again";
+                    DFPS.DFPSMessageBox.ShowBox(messageTitle, message, false);
+                }
             }
         }
         private bool validateDestination()

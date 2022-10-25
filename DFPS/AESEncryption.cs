@@ -221,29 +221,36 @@ namespace DFPS
             //hash the key
             var hashedKey = SHA256Hash.Hash(pass, salt);
 
-            using (Aes aes = Aes.Create())
+            try
             {
-                aes.Mode = CipherMode.CBC;
-                aes.BlockSize = 128;
-                aes.Padding = PaddingMode.PKCS7;
-
-                using (var encryptor = aes.CreateEncryptor(hashedKey, IV))
+                using (Aes aes = Aes.Create())
                 {
-                    using (var memoryStream = new MemoryStream())
+                    aes.Mode = CipherMode.CBC;
+                    aes.BlockSize = 128;
+                    aes.Padding = PaddingMode.PKCS7;
+
+                    using (var encryptor = aes.CreateEncryptor(hashedKey, IV))
                     {
-                        using (var cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write))
+                        using (var memoryStream = new MemoryStream())
                         {
-                            cryptoStream.Write(plainBytes, 0, plainBytes.Length);
-                            cryptoStream.FlushFinalBlock();
-                            var cipherTextBytes = salt;
-                            cipherTextBytes = cipherTextBytes.Concat(IV).ToArray();
-                            cipherTextBytes = cipherTextBytes.Concat(memoryStream.ToArray()).ToArray();
-                            memoryStream.Close();
-                            cryptoStream.Close();
-                            return cipherTextBytes;
+                            using (var cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write))
+                            {
+                                cryptoStream.Write(plainBytes, 0, plainBytes.Length);
+                                cryptoStream.FlushFinalBlock();
+                                var cipherTextBytes = salt;
+                                cipherTextBytes = cipherTextBytes.Concat(IV).ToArray();
+                                cipherTextBytes = cipherTextBytes.Concat(memoryStream.ToArray()).ToArray();
+                                memoryStream.Close();
+                                cryptoStream.Close();
+                                return cipherTextBytes;
+                            }
                         }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                return null;
             }
         }
 
@@ -255,26 +262,33 @@ namespace DFPS
 
             var hashedkey = SHA256Hash.Hash(pass, salt);
 
-            using (Aes aes = Aes.Create())
+            try
             {
-                aes.BlockSize = 128;
-                aes.Mode = CipherMode.CBC;
-                aes.Padding = PaddingMode.PKCS7;
-
-                using (var decryptor = aes.CreateDecryptor(hashedkey, IV))
+                using (Aes aes = Aes.Create())
                 {
-                    using (var memoryStream = new MemoryStream(cipherTextBytes))
+                    aes.BlockSize = 128;
+                    aes.Mode = CipherMode.CBC;
+                    aes.Padding = PaddingMode.PKCS7;
+
+                    using (var decryptor = aes.CreateDecryptor(hashedkey, IV))
                     {
-                        using (var cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read))
+                        using (var memoryStream = new MemoryStream(cipherTextBytes))
                         {
-                            var plainBytes = new byte[cipherByte.Length];
-                            var decryptByteCount = cryptoStream.Read(plainBytes, 0, plainBytes.Length);
-                            memoryStream.Close();
-                            cryptoStream.Close();
-                            return plainBytes.SubArray(0, decryptByteCount);
+                            using (var cryptoStream = new CryptoStream(memoryStream, decryptor, CryptoStreamMode.Read))
+                            {
+                                var plainBytes = new byte[cipherByte.Length];
+                                var decryptByteCount = cryptoStream.Read(plainBytes, 0, plainBytes.Length);
+                                memoryStream.Close();
+                                cryptoStream.Close();
+                                return plainBytes.SubArray(0, decryptByteCount);
+                            }
                         }
                     }
                 }
+            }
+            catch(Exception ex)
+            {
+                return null;
             }
         }
 

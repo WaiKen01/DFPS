@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.IO;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace DFPS
 {
@@ -21,7 +22,36 @@ namespace DFPS
 
         private void btnCompress_Click(object sender, EventArgs e)
         {
+            FileInfo file = new FileInfo(txtFileCompress.Text);
+            string dest = txtDest.Text;
+            HuffmanTree huffmanTree = new HuffmanTree();
+            var fileBytes = File.ReadAllBytes(file.FullName);
+            string fileString = Encoding.ASCII.GetString(fileBytes);
 
+            try
+            {
+                huffmanTree.Build(fileString);
+                BitArray encoded = huffmanTree.Encode(fileString);
+
+                byte[] encodedBytes = new byte[encoded.Length / 8 + (encoded.Length % 8 == 0 ? 0 : 1)];
+                encoded.CopyTo(encodedBytes, 0);
+
+                string output = Path.Combine(dest, Path.ChangeExtension(file.Name, ".bin"));
+                File.WriteAllBytes(output, encodedBytes);
+
+                var encodedBit = new BitArray(encodedBytes);
+                string decoded = huffmanTree.Decode(encodedBit);
+
+                var decodedBytes = Encoding.ASCII.GetBytes(decoded);
+
+                string output2 = Path.Combine(dest, Path.ChangeExtension(file.Name, ".txt"));
+                File.WriteAllBytes(output2, decodedBytes);
+
+            }
+            catch (Exception ex)
+            {
+
+            }
         }
 
         private void btnBrowseCompress_Click(object sender, EventArgs e)
@@ -65,6 +95,21 @@ namespace DFPS
             if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 txtDest.Text = fbd.SelectedPath;
+            }
+        }
+
+        private void clearForm()
+        {
+            foreach (Control c in Controls)
+            {
+                if (c is CheckBox)
+                {
+                    ((CheckBox)c).Checked = false;
+                }
+                else if (c is TextBox)
+                {
+                    ((TextBox)c).Text = "";
+                }
             }
         }
     }

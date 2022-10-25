@@ -24,14 +24,56 @@ namespace DFPS
 
         private void btnExtract_Click(object sender, EventArgs e)
         {
+            string messageTitle = "";
+            string message = "";
 
+            if (txtPassword.Text == "")
+            {
+                message += "Password is empty." + System.Environment.NewLine;
+            }
+            if (!FormValidation.validateDestination(txtDest.Text))
+            {
+                message += "Invalid destination. Please select an existed directory." + System.Environment.NewLine;
+            }
+            if (!FormValidation.validateFileExisted(txtFileExtract.Text))
+            {
+                message += "Invalid file. Please select an existed file." + System.Environment.NewLine;
+            }
+
+            if (message != "")
+            {
+                messageTitle = "Invalid input detected";
+                DFPS.DFPSMessageBox.ShowBox(messageTitle, message, false);
+            }
+            else
+            {
+                FileInfo stegoFile = new FileInfo(txtFileExtract.Text);
+                string pass = txtPassword.Text.Trim();
+                string dest = txtDest.Text;
+                if (Steganography.Extract(stegoFile, pass, dest))
+                {
+                    messageTitle = "Successful Extraction";
+                    message = "A new file has extracted sucessfully.";
+                    clearForm();
+                    lblSize.Text = "";
+                    lblType.Text = "";
+                    lblModified.Text = "";
+                    DFPS.DFPSMessageBox.ShowBox(messageTitle, message, true);
+                }
+                else
+                {
+                    messageTitle = "Failed Extraction";
+                    message = "No file has been extracted.";
+                    DFPS.DFPSMessageBox.ShowBox(messageTitle, message, false);
+                }
+            }
         }
 
         private void btnBrowseExtract_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Title = "Select File";
-            ofd.Filter = "PDF Document|*.pdf";
+            ofd.Filter = "Image Files (*.bmp; *.jpg; *.png)| *.bmp; *.jpg; *.png | PDF Files (*.pdf) | *.pdf";
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 FileInfo fi = new FileInfo(ofd.FileName);
@@ -62,13 +104,26 @@ namespace DFPS
                 txtFileExtract.Text = ofd.FileName;
             }
         }
-
         private void btnBrowseDest_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             if (fbd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 txtDest.Text = fbd.SelectedPath;
+            }
+        }
+        private void clearForm()
+        {
+            foreach (Control c in Controls)
+            {
+                if (c is CheckBox)
+                {
+                    ((CheckBox)c).Checked = false;
+                }
+                else if (c is TextBox)
+                {
+                    ((TextBox)c).Text = "";
+                }
             }
         }
     }
