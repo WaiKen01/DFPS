@@ -29,28 +29,7 @@ namespace DFPS
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 FileInfo fi = new FileInfo(ofd.FileName);
-                long size = fi.Length;
-                int sizeCheck = 0;
-                string sizeWord = "byte";
-
-                for (int i = 0; size >= 1024; i++)
-                {
-                    size = size / 1024;
-                    sizeCheck++;
-                }
-                if (sizeCheck == 1)
-                {
-                    sizeWord = "KB";
-                }
-                else if (sizeCheck == 2)
-                {
-                    sizeWord = "MB";
-                }
-                else if (sizeCheck == 3)
-                {
-                    sizeWord = "GB";
-                }
-                lblSize.Text = size.ToString() + sizeWord;
+                lblSize.Text = FormUtility.fileSize(fi.Length);
                 lblModified.Text = fi.LastWriteTime.ToString();
                 lblType.Text = fi.Extension;
                 txtFilePath.Text = ofd.FileName;

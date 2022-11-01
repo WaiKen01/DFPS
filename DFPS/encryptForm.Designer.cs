@@ -49,6 +49,7 @@ namespace DFPS
             this.btnEncrypt = new System.Windows.Forms.Button();
             this.checkRemain = new System.Windows.Forms.CheckBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.lblPasswordTips = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -266,12 +267,23 @@ namespace DFPS
             this.label8.TabIndex = 13;
             this.label8.Text = "Remain source file: ";
             // 
+            // lblPasswordTips
+            // 
+            this.lblPasswordTips.AutoSize = true;
+            this.lblPasswordTips.Font = new System.Drawing.Font("Segoe UI", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
+            this.lblPasswordTips.Location = new System.Drawing.Point(275, 344);
+            this.lblPasswordTips.Name = "lblPasswordTips";
+            this.lblPasswordTips.Size = new System.Drawing.Size(323, 17);
+            this.lblPasswordTips.TabIndex = 14;
+            this.lblPasswordTips.Text = "Recommended password length is 12-16 characters";
+            // 
             // encryptForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(198)))));
             this.ClientSize = new System.Drawing.Size(765, 477);
+            this.Controls.Add(this.lblPasswordTips);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.checkRemain);
             this.Controls.Add(this.btnEncrypt);
@@ -319,5 +331,6 @@ namespace DFPS
         private System.Windows.Forms.Button btnEncrypt;
         private System.Windows.Forms.CheckBox checkRemain;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblPasswordTips;
     }
 }

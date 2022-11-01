@@ -22,35 +22,45 @@ namespace DFPS
 
         private void btnCompress_Click(object sender, EventArgs e)
         {
-            FileInfo file = new FileInfo(txtFileCompress.Text);
-            string dest = txtDest.Text;
-            HuffmanTree huffmanTree = new HuffmanTree();
-            var fileBytes = File.ReadAllBytes(file.FullName);
-            string fileString = Encoding.ASCII.GetString(fileBytes);
-
-            try
+            string message = "";
+            string messageTitle = "";
+            if (!FormUtility.validateDestination(txtDest.Text))
             {
-                huffmanTree.Build(fileString);
-                BitArray encoded = huffmanTree.Encode(fileString);
-
-                byte[] encodedBytes = new byte[encoded.Length / 8 + (encoded.Length % 8 == 0 ? 0 : 1)];
-                encoded.CopyTo(encodedBytes, 0);
-
-                string output = Path.Combine(dest, Path.ChangeExtension(file.Name, ".bin"));
-                File.WriteAllBytes(output, encodedBytes);
-
-                var encodedBit = new BitArray(encodedBytes);
-                string decoded = huffmanTree.Decode(encodedBit);
-
-                var decodedBytes = Encoding.ASCII.GetBytes(decoded);
-
-                string output2 = Path.Combine(dest, Path.ChangeExtension(file.Name, ".txt"));
-                File.WriteAllBytes(output2, decodedBytes);
-
+                message += "Invalid destination. Please select an existed directory." + System.Environment.NewLine;
             }
-            catch (Exception ex)
+            if (!FormUtility.validateFileExisted(txtFileCompress.Text))
             {
+                message += "Invalid file. Please select an existed file." + System.Environment.NewLine;
+            }
 
+            if (message != "")
+            {
+                messageTitle = "Invalid input detected";
+                DFPS.DFPSMessageBox.ShowBox(messageTitle, message, false);
+            }
+            else
+            {
+                FileInfo file = new FileInfo(txtFileCompress.Text);
+                string dest = txtDest.Text;
+                if(DeflateCompression.Compression(file, dest))
+                {
+                    string oriSize = FormUtility.fileSize(file.Length);
+                    string outFile = Path.Combine(dest, Path.ChangeExtension(file.Name, "dfl"));
+                    FileInfo cmpFile = new FileInfo(outFile);
+                    string cmpSize = FormUtility.fileSize(cmpFile.Length);
+                    StringBuilder str = new StringBuilder();
+                    long savedSpace = file.Length - cmpFile.Length;
+                    string saved = FormUtility.fileSize(savedSpace);
+                    messageTitle = "Successful Compression";
+                    str.AppendFormat("A compressed file has been generated " + System.Environment.NewLine +
+                        "Original File Size     : {0}  " + System.Environment.NewLine +
+                        "Compressed File Size   : {1} " + System.Environment.NewLine +
+                        "Saved Space : {2}", oriSize, cmpSize, saved);
+                    DFPS.DFPSMessageBox.ShowBox(messageTitle, str.ToString(), true);
+                    clearForm();
+                    lblOriSize.Text = oriSize;
+                    lblCmpSize.Text = cmpSize;
+                }
             }
         }
 
@@ -61,28 +71,7 @@ namespace DFPS
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 FileInfo fi = new FileInfo(ofd.FileName);
-                long size = fi.Length;
-                int sizeCheck = 0;
-                string sizeWord = "byte";
-
-                for (int i = 0; size >= 1024; i++)
-                {
-                    size = size / 1024;
-                    sizeCheck++;
-                }
-                if (sizeCheck == 1)
-                {
-                    sizeWord = "KB";
-                }
-                else if (sizeCheck == 2)
-                {
-                    sizeWord = "MB";
-                }
-                else if (sizeCheck == 3)
-                {
-                    sizeWord = "GB";
-                }
-                lblSize.Text = size.ToString() + sizeWord;
+                lblSize.Text = FormUtility.fileSize(fi.Length);
                 lblModified.Text = fi.LastWriteTime.ToString();
                 lblType.Text = fi.Extension;
                 txtFileCompress.Text = ofd.FileName;
@@ -97,7 +86,6 @@ namespace DFPS
                 txtDest.Text = fbd.SelectedPath;
             }
         }
-
         private void clearForm()
         {
             foreach (Control c in Controls)

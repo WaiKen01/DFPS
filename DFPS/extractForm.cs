@@ -27,15 +27,15 @@ namespace DFPS
             string messageTitle = "";
             string message = "";
 
-            if (txtPassword.Text == "")
+            if (FormUtility.validateIfEmpty(txtPassword.Text))
             {
                 message += "Password is empty." + System.Environment.NewLine;
             }
-            if (!FormValidation.validateDestination(txtDest.Text))
+            if (!FormUtility.validateDestination(txtDest.Text))
             {
                 message += "Invalid destination. Please select an existed directory." + System.Environment.NewLine;
             }
-            if (!FormValidation.validateFileExisted(txtFileExtract.Text))
+            if (!FormUtility.validateFileExisted(txtFileExtract.Text))
             {
                 message += "Invalid file. Please select an existed file." + System.Environment.NewLine;
             }
@@ -63,7 +63,7 @@ namespace DFPS
                 else
                 {
                     messageTitle = "Failed Extraction";
-                    message = "No file has been extracted.";
+                    message = "No file has been extracted. Please try again.";
                     DFPS.DFPSMessageBox.ShowBox(messageTitle, message, false);
                 }
             }
@@ -77,28 +77,7 @@ namespace DFPS
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 FileInfo fi = new FileInfo(ofd.FileName);
-                long size = fi.Length;
-                int sizeCheck = 0;
-                string sizeWord = "byte";
-
-                for (int i = 0; size >= 1024; i++)
-                {
-                    size = size / 1024;
-                    sizeCheck++;
-                }
-                if (sizeCheck == 1)
-                {
-                    sizeWord = "KB";
-                }
-                else if (sizeCheck == 2)
-                {
-                    sizeWord = "MB";
-                }
-                else if (sizeCheck == 3)
-                {
-                    sizeWord = "GB";
-                }
-                lblSize.Text = size.ToString() + sizeWord;
+                lblSize.Text = FormUtility.fileSize(fi.Length);
                 lblModified.Text = fi.LastWriteTime.ToString();
                 lblType.Text = fi.Extension;
                 txtFileExtract.Text = ofd.FileName;

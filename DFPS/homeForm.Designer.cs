@@ -59,7 +59,7 @@ namespace DFPS
             this.lblStegno.AutoSize = true;
             this.lblStegno.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblStegno.ForeColor = System.Drawing.Color.White;
-            this.lblStegno.Location = new System.Drawing.Point(0, 37);
+            this.lblStegno.Location = new System.Drawing.Point(3, 37);
             this.lblStegno.MaximumSize = new System.Drawing.Size(699, 96);
             this.lblStegno.Name = "lblStegno";
             this.lblStegno.Size = new System.Drawing.Size(694, 69);
@@ -92,10 +92,10 @@ namespace DFPS
             this.lblCompress.AutoSize = true;
             this.lblCompress.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblCompress.ForeColor = System.Drawing.Color.White;
-            this.lblCompress.Location = new System.Drawing.Point(0, 37);
+            this.lblCompress.Location = new System.Drawing.Point(3, 37);
             this.lblCompress.MaximumSize = new System.Drawing.Size(699, 96);
             this.lblCompress.Name = "lblCompress";
-            this.lblCompress.Size = new System.Drawing.Size(692, 92);
+            this.lblCompress.Size = new System.Drawing.Size(595, 69);
             this.lblCompress.TabIndex = 3;
             this.lblCompress.Text = resources.GetString("lblCompress.Text");
             // 
@@ -106,9 +106,9 @@ namespace DFPS
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(20)))), ((int)(((byte)(43)))));
             this.label5.Location = new System.Drawing.Point(0, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(437, 31);
+            this.label5.Size = new System.Drawing.Size(197, 31);
             this.label5.TabIndex = 0;
-            this.label5.Text = "File Compression with Huffman Coding";
+            this.label5.Text = "File Compression";
             // 
             // panel3
             // 
@@ -125,7 +125,7 @@ namespace DFPS
             this.lblEncrypt.AutoSize = true;
             this.lblEncrypt.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblEncrypt.ForeColor = System.Drawing.Color.White;
-            this.lblEncrypt.Location = new System.Drawing.Point(0, 37);
+            this.lblEncrypt.Location = new System.Drawing.Point(3, 37);
             this.lblEncrypt.Name = "lblEncrypt";
             this.lblEncrypt.Size = new System.Drawing.Size(576, 69);
             this.lblEncrypt.TabIndex = 1;

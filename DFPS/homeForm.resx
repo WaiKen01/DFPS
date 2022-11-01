@@ -63,7 +63,7 @@ File Hiding: A secret file could be hidden into a cover file which will generate
 File Extraction: A secret file could be extracted from the stego file.</value>
   </data>
   <data name="lblCompress.Text" xml:space="preserve">
-    <value>Data compression (Huffman Coding) could reduce file size and increase file transmission speed.
+    <value>Data compression could reduce file size and increase file transmission speed.
 File Compression: To reduce a file size by compressing the content
 File Decompression: To return a compressed file to its original form</value>
   </data>

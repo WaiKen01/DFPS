@@ -35,19 +35,19 @@ namespace DFPS
             string messageTitle = "";
             string message = "";
 
-            if (!FormValidation.validatePassword(txtPassword.Text.Trim(),txtConPassword.Text.Trim()))
+            if (!FormUtility.validateMatch(txtPassword.Text.Trim(),txtConPassword.Text.Trim()))
             {
                 message += "Password and Confirm Password don't match." + System.Environment.NewLine;
             }
-            if (!FormValidation.validateDestination(txtDest.Text))
+            if (!FormUtility.validateDestination(txtDest.Text))
             {
                 message += "Invalid destination. Please select an existed directory." + System.Environment.NewLine;
             }
-            if (!FormValidation.validateFileExisted(txtFileCover.Text))
+            if (!FormUtility.validateFileExisted(txtFileCover.Text))
             {
                 message += "Invalid cover file. Please select an existed file." + System.Environment.NewLine;
             }
-            if (!FormValidation.validateFileExisted(txtFileSecret.Text))
+            if (!FormUtility.validateFileExisted(txtFileSecret.Text))
             {
                 message += "Invalid secret file. Please select an existed file." + System.Environment.NewLine;
             }
@@ -94,28 +94,7 @@ namespace DFPS
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 FileInfo fi = new FileInfo(ofd.FileName);
-                long size = fi.Length;
-                int sizeCheck = 0;
-                string sizeWord = "byte";
-
-                for (int i = 0; size >= 1024; i++)
-                {
-                    size = size / 1024;
-                    sizeCheck++;
-                }
-                if (sizeCheck == 1)
-                {
-                    sizeWord = "KB";
-                }
-                else if (sizeCheck == 2)
-                {
-                    sizeWord = "MB";
-                }
-                else if (sizeCheck == 3)
-                {
-                    sizeWord = "GB";
-                }
-                lblSizeCover.Text = size.ToString() + sizeWord;
+                lblSizeCover.Text = FormUtility.fileSize(fi.Length);
                 lblModifiedCover.Text = fi.LastWriteTime.ToString();
                 lblTypeCover.Text = fi.Extension;
                 txtFileCover.Text = ofd.FileName;
@@ -129,28 +108,7 @@ namespace DFPS
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 FileInfo fi = new FileInfo(ofd.FileName);
-                long size = fi.Length;
-                int sizeCheck = 0;
-                string sizeWord = "byte";
-
-                for (int i = 0; size >= 1024; i++)
-                {
-                    size = size / 1024;
-                    sizeCheck++;
-                }
-                if (sizeCheck == 1)
-                {
-                    sizeWord = "KB";
-                }
-                else if (sizeCheck == 2)
-                {
-                    sizeWord = "MB";
-                }
-                else if (sizeCheck == 3)
-                {
-                    sizeWord = "GB";
-                }
-                lblSizeSecret.Text = size.ToString() + sizeWord;
+                lblSizeSecret.Text = FormUtility.fileSize(fi.Length);
                 lblModifiedSecret.Text = fi.LastWriteTime.ToString();
                 lblTypeSecret.Text = fi.Extension;
                 txtFileSecret.Text = ofd.FileName;
