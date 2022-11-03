@@ -41,7 +41,6 @@ namespace DFPS
         {
             using (var inFileStream = new FileStream(file.FullName, FileMode.Open))
             {
-                Console.WriteLine("1");
                 try
                 {
                     //Get extension Length

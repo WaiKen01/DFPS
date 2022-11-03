@@ -19,11 +19,9 @@ namespace DFPS
             lblModified.Text = "";
             txtPassword.Text = "";
             txtPassword.PasswordChar = '*';
-            txtPassword.MaxLength = 16;
 
             txtConPassword.Text = "";
             txtConPassword.PasswordChar = '*';
-            txtConPassword.MaxLength = 16;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -51,12 +49,17 @@ namespace DFPS
 
         private void btnEncrypt_Click(object sender, EventArgs e)
         {
+            FormUtility.disableButton(btnEncrypt);
             string messageTitle = "";
             string message = "";
 
             if (!FormUtility.validateMatch(txtPassword.Text.Trim(),txtConPassword.Text.Trim()))
             {
                 message += "Password and Confirm Password don't match." + System.Environment.NewLine;
+            }
+            if (!FormUtility.validateLength(txtPassword.Text.Trim(), 12, 16))
+            {
+                message += "Password length must have at least 12 characters." + System.Environment.NewLine;
             }
             if (!FormUtility.validateDestination(txtDestination.Text))
             {
@@ -77,8 +80,8 @@ namespace DFPS
                 FileInfo file = new FileInfo(txtFilePath.Text);
                 string pass = txtPassword.Text;
                 string destPath = txtDestination.Text;
-               if(AESEncryption.Encrypt(pass, file, destPath))
-               {
+                if(AESEncryption.Encrypt(pass, file, destPath))
+                {
                     if (!checkRemain.Checked)
                     {
                         File.Delete(file.FullName);
@@ -88,17 +91,17 @@ namespace DFPS
                     message = "Encrypted file has been generated : " + newFileName;
                     clearForm();
                     DFPS.DFPSMessageBox.ShowBox(messageTitle, message, true);
-               }
-               else
-               {
+                }
+                else
+                {
                     messageTitle = "Failed to encrypt";
                     message = "File is not encrypted. Please try again.";
                     clearForm();
                     DFPS.DFPSMessageBox.ShowBox(messageTitle, message, false);
                 }
             }
+            FormUtility.reactivateButton(btnEncrypt);
         }
-
         private void clearForm()
         {
             foreach (Control c in Controls)
@@ -110,6 +113,10 @@ namespace DFPS
                 else if (c is TextBox)
                 {
                     ((TextBox)c).Text = "";
+                }
+                else if (c is Label)
+                {
+                    ((Label)c).Text = "";
                 }
             }
         }

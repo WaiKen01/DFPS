@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Windows.Forms;
 
 namespace DFPS
 {
@@ -50,5 +51,15 @@ namespace DFPS
             }
             return size.ToString() + sizeWord;
         }
+
+        public static void disableButton(Button button)
+        {
+            button.Enabled = false;
+        }
+        public static void reactivateButton(Button button)
+        {
+            button.Enabled = true;
+        }
+
     }
 }

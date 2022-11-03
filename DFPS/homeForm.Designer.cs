@@ -73,9 +73,9 @@ namespace DFPS
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(20)))), ((int)(((byte)(43)))));
             this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(354, 31);
+            this.label4.Size = new System.Drawing.Size(547, 31);
             this.label4.TabIndex = 0;
-            this.label4.Text = "File Hiding with Steganography";
+            this.label4.Text = "File Hiding with Append Insertion Steganography";
             // 
             // panel5
             // 
@@ -106,9 +106,9 @@ namespace DFPS
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(20)))), ((int)(((byte)(43)))));
             this.label5.Location = new System.Drawing.Point(0, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(197, 31);
+            this.label5.Size = new System.Drawing.Size(452, 31);
             this.label5.TabIndex = 0;
-            this.label5.Text = "File Compression";
+            this.label5.Text = "File Compression with Deflate Algorithm";
             // 
             // panel3
             // 

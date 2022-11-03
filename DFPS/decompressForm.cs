@@ -21,6 +21,7 @@ namespace DFPS
 
         private void btnDecompress_Click(object sender, EventArgs e)
         {
+            FormUtility.disableButton(btnDecompress);
             string messageTitle = "";
             string message = "";
             if (!FormUtility.validateDestination(txtDest.Text))
@@ -49,6 +50,7 @@ namespace DFPS
                     clearForm();
                 }
             }
+            FormUtility.reactivateButton(btnDecompress);
         }
 
         private void btnBrowseDecomp_Click(object sender, EventArgs e)
@@ -84,6 +86,10 @@ namespace DFPS
                 else if (c is TextBox)
                 {
                     ((TextBox)c).Text = "";
+                }
+                else if (c is Label)
+                {
+                    ((Label)c).Text = "";
                 }
             }
         }

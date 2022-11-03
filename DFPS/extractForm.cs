@@ -19,11 +19,11 @@ namespace DFPS
             lblModified.Text = "";
             txtPassword.Text = "";
             txtPassword.PasswordChar = '*';
-            txtPassword.MaxLength = 16;
         }
 
         private void btnExtract_Click(object sender, EventArgs e)
         {
+            FormUtility.disableButton(btnExtract);
             string messageTitle = "";
             string message = "";
 
@@ -67,6 +67,7 @@ namespace DFPS
                     DFPS.DFPSMessageBox.ShowBox(messageTitle, message, false);
                 }
             }
+            FormUtility.reactivateButton(btnExtract);
         }
 
         private void btnBrowseExtract_Click(object sender, EventArgs e)
@@ -102,6 +103,10 @@ namespace DFPS
                 else if (c is TextBox)
                 {
                     ((TextBox)c).Text = "";
+                }
+                else if (c is Label)
+                {
+                    ((Label)c).Text = "";
                 }
             }
         }

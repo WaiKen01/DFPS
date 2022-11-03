@@ -208,6 +208,7 @@ namespace DFPS
             // txtPassword
             // 
             this.txtPassword.Location = new System.Drawing.Point(44, 290);
+            this.txtPassword.MaxLength = 16;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(552, 27);
             this.txtPassword.TabIndex = 10;

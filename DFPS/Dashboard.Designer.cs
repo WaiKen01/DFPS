@@ -77,7 +77,7 @@ namespace DFPS
             this.btnCompressNav.Name = "btnCompressNav";
             this.btnCompressNav.Size = new System.Drawing.Size(186, 42);
             this.btnCompressNav.TabIndex = 1;
-            this.btnCompressNav.Text = "File Compression";
+            this.btnCompressNav.Text = "Compression";
             this.btnCompressNav.UseVisualStyleBackColor = false;
             this.btnCompressNav.Click += new System.EventHandler(this.btnCompressNav_Click);
             this.btnCompressNav.Leave += new System.EventHandler(this.btnCompressNav_Leave);
@@ -93,7 +93,7 @@ namespace DFPS
             this.btnDecompressNav.Name = "btnDecompressNav";
             this.btnDecompressNav.Size = new System.Drawing.Size(186, 42);
             this.btnDecompressNav.TabIndex = 1;
-            this.btnDecompressNav.Text = "File Decompression";
+            this.btnDecompressNav.Text = "Decompression";
             this.btnDecompressNav.UseVisualStyleBackColor = false;
             this.btnDecompressNav.Click += new System.EventHandler(this.btnDecompressNav_Click);
             this.btnDecompressNav.Leave += new System.EventHandler(this.btnDecompressNav_Leave);
@@ -110,7 +110,7 @@ namespace DFPS
             this.btnExtractNav.Name = "btnExtractNav";
             this.btnExtractNav.Size = new System.Drawing.Size(186, 42);
             this.btnExtractNav.TabIndex = 1;
-            this.btnExtractNav.Text = "Flie Extraction";
+            this.btnExtractNav.Text = "Extraction";
             this.btnExtractNav.UseVisualStyleBackColor = false;
             this.btnExtractNav.Click += new System.EventHandler(this.btnExtractNav_Click);
             this.btnExtractNav.Leave += new System.EventHandler(this.btnExtractNav_Leave);
@@ -127,7 +127,7 @@ namespace DFPS
             this.btnStegoNav.Name = "btnStegoNav";
             this.btnStegoNav.Size = new System.Drawing.Size(186, 42);
             this.btnStegoNav.TabIndex = 1;
-            this.btnStegoNav.Text = "Steganography";
+            this.btnStegoNav.Text = "Hiding";
             this.btnStegoNav.UseVisualStyleBackColor = false;
             this.btnStegoNav.Click += new System.EventHandler(this.btnStegoNav_Click);
             this.btnStegoNav.Leave += new System.EventHandler(this.btnStegoNav_Leave);

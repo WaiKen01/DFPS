@@ -23,21 +23,24 @@ namespace DFPS
             lblModifiedSecret.Text = "";
             txtPassword.Text = "";
             txtPassword.PasswordChar = '*';
-            txtPassword.MaxLength = 16;
 
             txtConPassword.Text = "";
             txtConPassword.PasswordChar = '*';
-            txtConPassword.MaxLength = 16;
         }
 
         private void btnHide_Click(object sender, EventArgs e)
         {
+            FormUtility.disableButton(btnHide);
             string messageTitle = "";
             string message = "";
 
             if (!FormUtility.validateMatch(txtPassword.Text.Trim(),txtConPassword.Text.Trim()))
             {
                 message += "Password and Confirm Password don't match." + System.Environment.NewLine;
+            }
+            if (!FormUtility.validateLength(txtPassword.Text.Trim(), 12, 16))
+            {
+                message += "Password length must have at least 12 characters." + System.Environment.NewLine;
             }
             if (!FormUtility.validateDestination(txtDest.Text))
             {
@@ -69,12 +72,6 @@ namespace DFPS
                     messageTitle = "Successful Hiding";
                     message = "A new file has been generated sucessfully.";
                     clearForm();
-                    lblSizeCover.Text = "";
-                    lblTypeCover.Text = "";
-                    lblModifiedCover.Text = "";
-                    lblSizeSecret.Text = "";
-                    lblTypeSecret.Text = "";
-                    lblModifiedSecret.Text = "";
                     DFPS.DFPSMessageBox.ShowBox(messageTitle, message, true);
                 }
                 else
@@ -84,6 +81,7 @@ namespace DFPS
                     DFPS.DFPSMessageBox.ShowBox(messageTitle, message, false);
                 }
             }
+            FormUtility.reactivateButton(btnHide);
         }
 
         private void btnBrowseCover_Click(object sender, EventArgs e)
@@ -135,6 +133,10 @@ namespace DFPS
                 else if (c is TextBox)
                 {
                     ((TextBox)c).Text = "";
+                }
+                else if (c is Label)
+                {
+                    ((Label)c).Text = "";
                 }
             }
         }

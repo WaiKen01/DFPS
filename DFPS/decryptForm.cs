@@ -19,7 +19,6 @@ namespace DFPS
             lblModified.Text = "";
             txtPassword.Text = "";
             txtPassword.PasswordChar = '*';
-            txtPassword.MaxLength = 16;
         }
 
         private void btnBrowseFile_Click(object sender, EventArgs e)
@@ -45,6 +44,7 @@ namespace DFPS
         }
         private void btnDecrypt_Click(object sender, EventArgs e)
         {
+            FormUtility.disableButton(btnDecrypt);
             string messageTitle = "";
             string message = "";
             if (!validateDestination())
@@ -84,6 +84,7 @@ namespace DFPS
                     DFPS.DFPSMessageBox.ShowBox(messageTitle, message, false);
                 }
             }
+            FormUtility.reactivateButton(btnDecrypt);
         }
         private bool validateDestination()
         {
@@ -104,6 +105,10 @@ namespace DFPS
                 else if (c is TextBox)
                 {
                     ((TextBox)c).Text = "";
+                }
+                else if (c is Label)
+                {
+                    ((Label)c).Text = "";
                 }
             }
         }

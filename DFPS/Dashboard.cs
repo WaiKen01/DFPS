@@ -44,79 +44,78 @@ namespace DFPS
         private void btnHome_Click(object sender, EventArgs e)
         {
             lblTitle.Text = "Welcome to DFPS";
-            btnActive(btnHome);
             this.pnlFormLoader.Controls.Clear();
             homeForm homeFormContent = new homeForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             homeFormContent.FormBorderStyle = FormBorderStyle.None;
             this.pnlFormLoader.Controls.Add(homeFormContent);
             homeFormContent.Show();
+            btnActive(btnHome);
         }
 
         private void btnEncryptNav_Click(object sender, EventArgs e)
         {
             lblTitle.Text = "File Encryption";
-            btnActive(btnEncryptNav);
             this.pnlFormLoader.Controls.Clear();
             encryptForm encryptFormContent = new encryptForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             encryptFormContent.FormBorderStyle = FormBorderStyle.None;
             this.pnlFormLoader.Controls.Add(encryptFormContent);
             encryptFormContent.Show();
+            btnActive(btnEncryptNav);
         }
 
         private void btnDecryptNav_Click(object sender, EventArgs e)
         {
             lblTitle.Text = "File Decryption";
-            btnActive(btnDecryptNav);
             this.pnlFormLoader.Controls.Clear();
             decryptForm decryptFormContent = new decryptForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             decryptFormContent.FormBorderStyle = FormBorderStyle.None;
             this.pnlFormLoader.Controls.Add(decryptFormContent);
             decryptFormContent.Show();
+            btnActive(btnDecryptNav);
         }
 
         private void btnStegoNav_Click(object sender, EventArgs e)
         {
             lblTitle.Text = "File Hiding";
-            btnActive(btnStegoNav);
             this.pnlFormLoader.Controls.Clear();
             hideForm hideFormContent = new hideForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             hideFormContent.FormBorderStyle = FormBorderStyle.None;
             this.pnlFormLoader.Controls.Add(hideFormContent);
             hideFormContent.Show();
-
+            btnActive(btnStegoNav);
         }
 
         private void btnExtractNav_Click(object sender, EventArgs e)
         {
             lblTitle.Text = "File Extraction";
-            btnActive(btnExtractNav);
             this.pnlFormLoader.Controls.Clear();
             extractForm extractFormContent = new extractForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             extractFormContent.FormBorderStyle = FormBorderStyle.None;
             this.pnlFormLoader.Controls.Add(extractFormContent);
             extractFormContent.Show();
+            btnActive(btnExtractNav);
         }
 
         private void btnCompressNav_Click(object sender, EventArgs e)
         {
             lblTitle.Text = "File Compression";
-            btnActive(btnCompressNav);
             this.pnlFormLoader.Controls.Clear();
             compressForm compressFormContent = new compressForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             compressFormContent.FormBorderStyle = FormBorderStyle.None;
             this.pnlFormLoader.Controls.Add(compressFormContent);
             compressFormContent.Show();
+            btnActive(btnCompressNav);
         }
 
         private void btnDecompressNav_Click(object sender, EventArgs e)
         {
             lblTitle.Text = "File Decompression";
-            btnActive(btnDecompressNav);
             this.pnlFormLoader.Controls.Clear();
             decompressForm decompressFormContent = new decompressForm() { Dock = DockStyle.Fill, TopLevel = false, TopMost = true };
             decompressFormContent.FormBorderStyle = FormBorderStyle.None;
             this.pnlFormLoader.Controls.Add(decompressFormContent);
             decompressFormContent.Show();
+            btnActive(btnDecompressNav);
         }
 
         private void btnHome_Leave(object sender, EventArgs e)
@@ -156,6 +155,14 @@ namespace DFPS
 
         private void btnActive(Button btn)
         {
+            foreach (Control c in panel1.Controls)
+            {
+                if (c is Button)
+                {
+                    btnLeave((Button)c);
+                }
+            }
+
             pnlNav.Height = btn.Height;
             pnlNav.Top = btn.Top;
             pnlNav.Left = btn.Left;

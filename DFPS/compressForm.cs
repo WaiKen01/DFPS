@@ -22,6 +22,7 @@ namespace DFPS
 
         private void btnCompress_Click(object sender, EventArgs e)
         {
+            FormUtility.disableButton(btnCompress);
             string message = "";
             string messageTitle = "";
             if (!FormUtility.validateDestination(txtDest.Text))
@@ -62,6 +63,7 @@ namespace DFPS
                     lblCmpSize.Text = cmpSize;
                 }
             }
+            FormUtility.reactivateButton(btnCompress);
         }
 
         private void btnBrowseCompress_Click(object sender, EventArgs e)
@@ -97,6 +99,10 @@ namespace DFPS
                 else if (c is TextBox)
                 {
                     ((TextBox)c).Text = "";
+                }
+                else if (c is Label)
+                {
+                    ((Label)c).Text = "";
                 }
             }
         }
