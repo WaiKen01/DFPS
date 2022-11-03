@@ -72,6 +72,12 @@ namespace DFPS
                     messageTitle = "Successful Hiding";
                     message = "A new file has been generated sucessfully.";
                     clearForm();
+                    lblModifiedCover.Text = "";
+                    lblSizeCover.Text = "";
+                    lblTypeCover.Text = "";
+                    lblModifiedSecret.Text = "";
+                    lblSizeSecret.Text = "";
+                    lblTypeSecret.Text = "";
                     DFPS.DFPSMessageBox.ShowBox(messageTitle, message, true);
                 }
                 else
@@ -133,10 +139,6 @@ namespace DFPS
                 else if (c is TextBox)
                 {
                     ((TextBox)c).Text = "";
-                }
-                else if (c is Label)
-                {
-                    ((Label)c).Text = "";
                 }
             }
         }

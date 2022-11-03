@@ -104,10 +104,6 @@ namespace DFPS
                 {
                     ((TextBox)c).Text = "";
                 }
-                else if (c is Label)
-                {
-                    ((Label)c).Text = "";
-                }
             }
         }
     }

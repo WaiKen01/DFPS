@@ -59,8 +59,9 @@ namespace DFPS
                         "Saved Space : {2}", oriSize, cmpSize, saved);
                     DFPS.DFPSMessageBox.ShowBox(messageTitle, str.ToString(), true);
                     clearForm();
-                    lblOriSize.Text = oriSize;
-                    lblCmpSize.Text = cmpSize;
+                    lblModified.Text = "";
+                    lblSize.Text = "";
+                    lblType.Text = "";
                 }
             }
             FormUtility.reactivateButton(btnCompress);
@@ -99,10 +100,6 @@ namespace DFPS
                 else if (c is TextBox)
                 {
                     ((TextBox)c).Text = "";
-                }
-                else if (c is Label)
-                {
-                    ((Label)c).Text = "";
                 }
             }
         }

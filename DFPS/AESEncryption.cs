@@ -171,6 +171,19 @@ namespace DFPS
                     {
                         ext = ".png";
                     }
+                    else if (SHA256Hash.compareHash(".dfl", salt, hashedExt))
+                    {
+                        ext = ".dfl";
+                    }
+                    else if (SHA256Hash.compareHash(".xlsx", salt, hashedExt))
+                    {
+                        ext = ".xlsx";
+                    }
+                    else if (SHA256Hash.compareHash(".pptx", salt, hashedExt))
+                    {
+                        ext = ".pptx";
+                    }
+
 
                     string outFile = Path.Combine(destinationPath, Path.ChangeExtension(file.Name, ext));
                     ICryptoTransform transform = aes.CreateDecryptor(hashedkey, iv);

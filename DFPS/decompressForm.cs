@@ -48,6 +48,9 @@ namespace DFPS
                     message = "File has been returned to its original form.";
                     DFPS.DFPSMessageBox.ShowBox(messageTitle, message, true);
                     clearForm();
+                    lblModified.Text = "";
+                    lblSize.Text = "";
+                    lblType.Text = "";
                 }
             }
             FormUtility.reactivateButton(btnDecompress);
@@ -86,10 +89,6 @@ namespace DFPS
                 else if (c is TextBox)
                 {
                     ((TextBox)c).Text = "";
-                }
-                else if (c is Label)
-                {
-                    ((Label)c).Text = "";
                 }
             }
         }

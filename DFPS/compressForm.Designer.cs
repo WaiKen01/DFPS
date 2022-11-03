@@ -43,10 +43,6 @@ namespace DFPS
             this.txtDest = new System.Windows.Forms.TextBox();
             this.btnBrowseDest = new System.Windows.Forms.Button();
             this.btnCompress = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.lblOriSize = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.lblCmpSize = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -211,60 +207,12 @@ namespace DFPS
             this.btnCompress.UseVisualStyleBackColor = false;
             this.btnCompress.Click += new System.EventHandler(this.btnCompress_Click);
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(44, 334);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(131, 20);
-            this.label6.TabIndex = 6;
-            this.label6.Text = "Original File Size: ";
-            // 
-            // lblOriSize
-            // 
-            this.lblOriSize.AutoSize = true;
-            this.lblOriSize.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblOriSize.ForeColor = System.Drawing.Color.White;
-            this.lblOriSize.Location = new System.Drawing.Point(219, 334);
-            this.lblOriSize.Name = "lblOriSize";
-            this.lblOriSize.Size = new System.Drawing.Size(51, 20);
-            this.lblOriSize.TabIndex = 6;
-            this.lblOriSize.Text = "label5";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(44, 367);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(162, 20);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Compressed File Size: ";
-            // 
-            // lblCmpSize
-            // 
-            this.lblCmpSize.AutoSize = true;
-            this.lblCmpSize.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lblCmpSize.ForeColor = System.Drawing.Color.White;
-            this.lblCmpSize.Location = new System.Drawing.Point(219, 367);
-            this.lblCmpSize.Name = "lblCmpSize";
-            this.lblCmpSize.Size = new System.Drawing.Size(51, 20);
-            this.lblCmpSize.TabIndex = 12;
-            this.lblCmpSize.Text = "label5";
-            // 
             // compressForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(198)))));
             this.ClientSize = new System.Drawing.Size(765, 477);
-            this.Controls.Add(this.lblCmpSize);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.lblOriSize);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnCompress);
             this.Controls.Add(this.btnBrowseDest);
             this.Controls.Add(this.txtDest);
@@ -300,9 +248,5 @@ namespace DFPS
         private System.Windows.Forms.TextBox txtDest;
         private System.Windows.Forms.Button btnBrowseDest;
         private System.Windows.Forms.Button btnCompress;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label lblOriSize;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label lblCmpSize;
     }
 }

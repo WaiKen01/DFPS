@@ -28,11 +28,11 @@ namespace DFPS
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Title = "Select File";
-            if(ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 FileInfo fi = new FileInfo(ofd.FileName);
                 lblSize.Text = FormUtility.fileSize(fi.Length);
-                lblModified.Text  = fi.LastWriteTime.ToString();
+                lblModified.Text = fi.LastWriteTime.ToString();
                 lblType.Text = fi.Extension;
                 txtFilePath.Text = ofd.FileName;
             }
@@ -53,7 +53,7 @@ namespace DFPS
             string messageTitle = "";
             string message = "";
 
-            if (!FormUtility.validateMatch(txtPassword.Text.Trim(),txtConPassword.Text.Trim()))
+            if (!FormUtility.validateMatch(txtPassword.Text.Trim(), txtConPassword.Text.Trim()))
             {
                 message += "Password and Confirm Password don't match." + System.Environment.NewLine;
             }
@@ -70,7 +70,7 @@ namespace DFPS
                 message += "Invalid file. Please select an existed file." + System.Environment.NewLine;
             }
 
-            if(message != "")
+            if (message != "")
             {
                 messageTitle = "Invalid input detected";
                 DFPS.DFPSMessageBox.ShowBox(messageTitle, message, false);
@@ -80,7 +80,7 @@ namespace DFPS
                 FileInfo file = new FileInfo(txtFilePath.Text);
                 string pass = txtPassword.Text;
                 string destPath = txtDestination.Text;
-                if(AESEncryption.Encrypt(pass, file, destPath))
+                if (AESEncryption.Encrypt(pass, file, destPath))
                 {
                     if (!checkRemain.Checked)
                     {
@@ -90,6 +90,9 @@ namespace DFPS
                     messageTitle = "Successful Encrypted";
                     message = "Encrypted file has been generated : " + newFileName;
                     clearForm();
+                    lblModified.Text = "";
+                    lblSize.Text = "";
+                    lblType.Text = "";
                     DFPS.DFPSMessageBox.ShowBox(messageTitle, message, true);
                 }
                 else
@@ -97,6 +100,9 @@ namespace DFPS
                     messageTitle = "Failed to encrypt";
                     message = "File is not encrypted. Please try again.";
                     clearForm();
+                    lblModified.Text = "";
+                    lblSize.Text = "";
+                    lblType.Text = "";
                     DFPS.DFPSMessageBox.ShowBox(messageTitle, message, false);
                 }
             }
@@ -113,10 +119,6 @@ namespace DFPS
                 else if (c is TextBox)
                 {
                     ((TextBox)c).Text = "";
-                }
-                else if (c is Label)
-                {
-                    ((Label)c).Text = "";
                 }
             }
         }

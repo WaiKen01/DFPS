@@ -75,6 +75,9 @@ namespace DFPS
                     messageTitle = "Successful Decrypted";
                     message = "File has been successfully decrypted. Please check your file at " + destPath + "folder";
                     clearForm();
+                    lblModified.Text = "";
+                    lblSize.Text = "";
+                    lblType.Text = "";
                     DFPS.DFPSMessageBox.ShowBox(messageTitle, message, true);
                 }
                 else
@@ -105,10 +108,6 @@ namespace DFPS
                 else if (c is TextBox)
                 {
                     ((TextBox)c).Text = "";
-                }
-                else if (c is Label)
-                {
-                    ((Label)c).Text = "";
                 }
             }
         }
