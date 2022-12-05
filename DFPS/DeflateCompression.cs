@@ -12,6 +12,7 @@ namespace DFPS
         {
             using FileStream infileStream = File.Open(file.FullName, FileMode.Open);
             string output = Path.Combine(dest, Path.ChangeExtension(file.Name, "dfl"));
+            //File extension
             string ext = file.Extension;
             var extByte = Encoding.ASCII.GetBytes(ext);
             int extLength = ext.Length;
@@ -79,6 +80,10 @@ namespace DFPS
                 catch (Exception ex)
                 {
                     return null;
+                }
+                finally
+                {
+                    inFileStream.Close();
                 }
             }
         }

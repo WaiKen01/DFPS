@@ -22,11 +22,7 @@ namespace DFPS
 
         public static bool validateFileExtension(string fileName, int length, string ext)
         {
-            if (getLast(fileName, length).Equals(ext))
-            {
-                return true;
-            }
-            return false;
+            return getLast(fileName, length).Equals(ext);
         }
         public static bool validateIfEmpty(string str)
         {
@@ -46,7 +42,7 @@ namespace DFPS
             return null;
         }
 
-        public static string fileSize (long size)
+        public static string fileSize(long size)
         {
             int sizeCheck = 0;
             string sizeWord = "Byte";

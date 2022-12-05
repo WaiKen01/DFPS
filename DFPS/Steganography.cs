@@ -17,7 +17,9 @@ namespace DFPS
             try
             {
                 var cipherBytes = AESEncryption.EncryptByte(secretFileBytes, pass);
+                //generate ID Block
                 var generatedIDBlock = GenerateIDBlock(secretFileBytes, secretFileType, coverFileBytes);
+                //Append cipherBytes + encrypted generated ID block 
                 var cipherBytesWithIdBlock = cipherBytes.Concat(AESEncryption.EncryptByte(generatedIDBlock, pass)).ToArray();
                 string outFile = Path.Combine(destinationPath, coverFile.Name);
                 File.WriteAllBytes(outFile, coverFileBytes.Concat(cipherBytesWithIdBlock).ToArray());
@@ -35,6 +37,7 @@ namespace DFPS
             var stegoFileBytes = File.ReadAllBytes(stegoFile.FullName);
             try
             {
+                //retrieve ID Block
                 var retrievedIdBlockString = Encoding.ASCII.GetString(AESEncryption.DecryptByte(stegoFileBytes.Skip(stegoFileBytes.Length - 128).ToArray(), pass)).Split('|');
                 if (retrievedIdBlockString.Length != 3)
                 {
@@ -44,9 +47,10 @@ namespace DFPS
                 var hiddenFileType = retrievedIdBlockString[1].ToLower();
                 var keyIndex = Convert.ToInt32(retrievedIdBlockString[2]);
 
+                //retrieve Cipher Bytes  + ID block
                 var retrievedCipherBytesWithIdBlock = stegoFileBytes.Skip(keyIndex).ToArray();
                 var retrievedCipherBytes = retrievedCipherBytesWithIdBlock.Take(retrievedCipherBytesWithIdBlock.Length - 128).ToArray();
-
+                
                 var retrievedSecretBytes = AESEncryption.DecryptByte(retrievedCipherBytes, pass);
                 if (retrievedHash != SHA256Hash.generateHash(retrievedSecretBytes))
                 {

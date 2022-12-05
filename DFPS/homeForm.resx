@@ -68,7 +68,7 @@ Recommended cover file: .png, .jpg, .gif, .bmp, .pdf, .mp3, .wav, .mp4, .mov
     <value>Data compression could reduce file size and increase file transmission speed.
 File Compression: To reduce a file size by compressing the content
 File Decompression: To return a compressed file to its original form
-Recommended file type: .txt, .docx, .xlsx, .pdf, .zip
+Recommended file type: .txt, .docx, .xlsx, .pdf, .pptx
 
 </value>
   </data>

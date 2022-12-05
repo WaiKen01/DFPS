@@ -66,6 +66,10 @@ namespace DFPS
             {
                 message += "Invalid destination. Please select an existed directory." + System.Environment.NewLine;
             }
+            else if(FormUtility.validateFileExtension(txtFilePath.Text, 4, ".enc"))
+            {
+                message += "The file is encrypted. Please select other files.";
+            }
             if (!FormUtility.validateFileExisted(txtFilePath.Text))
             {
                 message += "Invalid file. Please select an existed file." + System.Environment.NewLine;
@@ -89,7 +93,7 @@ namespace DFPS
                     FileInfo compressedFile = new FileInfo(DeflateCompression.Compress(file, destPath));
                     outFile = AESEncryption.Encrypt(pass, compressedFile, destPath);
                     stopwatch.Stop();
-                    //File.Delete(compressedFile.FullName);
+                    File.Delete(compressedFile.FullName);
                 }
                 else
                 {

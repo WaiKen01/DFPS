@@ -74,7 +74,9 @@ namespace DFPS
             // 
             // iconBox
             // 
-            this.iconBox.ErrorImage = global::DFPS.Properties.Resources.success;
+            this.iconBox.ErrorImage = global::DFPS.Properties.Resources.success11;
+            this.iconBox.Image = global::DFPS.Properties.Resources.warning11;
+            this.iconBox.InitialImage = null;
             this.iconBox.Location = new System.Drawing.Point(9, 3);
             this.iconBox.Name = "iconBox";
             this.iconBox.Size = new System.Drawing.Size(40, 40);

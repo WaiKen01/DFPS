@@ -57,9 +57,12 @@ namespace DFPS
             {
                 message += "Invalid file. Please select an existed file." + System.Environment.NewLine;
             }
-            if(!FormUtility.validateFileExtension(txtFilePath.Text, 4,".enc"))
+            else
             {
-                message += "Invalid file type. Please select a file with .enc as file extension." + System.Environment.NewLine;
+                if (!FormUtility.validateFileExtension(txtFilePath.Text, 4, ".enc"))
+                {
+                    message += "Invalid file type. Please select a file with .enc as file extension." + System.Environment.NewLine;
+                }
             }
             if (FormUtility.validateIfEmpty(txtPassword.Text.Trim()))
             {

@@ -27,7 +27,7 @@ namespace DFPS
         public static void ShowBox(string messageTitle, string message)
         {
             newMessageBox = new DFPSMessageBox();
-            newMessageBox.iconBox.Image = DFPS.Properties.Resources.fail;
+            newMessageBox.iconBox.Image = DFPS.Properties.Resources.fail11;
             newMessageBox.lblMessageTitle.Text = messageTitle;
             newMessageBox.lblMessage.Text = message;
             newMessageBox.ShowDialog();
@@ -38,11 +38,11 @@ namespace DFPS
             newMessageBox = new DFPSMessageBox();
             if (success)
             {
-                newMessageBox.iconBox.Image = DFPS.Properties.Resources.success;
+                newMessageBox.iconBox.Image = DFPS.Properties.Resources.success11;
             }
             else
             {
-                newMessageBox.iconBox.Image = DFPS.Properties.Resources.fail;
+                newMessageBox.iconBox.Image = DFPS.Properties.Resources.fail11;
             }
             newMessageBox.lblMessageTitle.Text = messageTitle;
             newMessageBox.lblMessage.Text = message;

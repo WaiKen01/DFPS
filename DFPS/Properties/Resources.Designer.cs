@@ -63,9 +63,9 @@ namespace DFPS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap fail {
+        internal static System.Drawing.Bitmap fail11 {
             get {
-                object obj = ResourceManager.GetObject("fail", resourceCulture);
+                object obj = ResourceManager.GetObject("fail11", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace DFPS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap success {
+        internal static System.Drawing.Bitmap success11 {
             get {
-                object obj = ResourceManager.GetObject("success", resourceCulture);
+                object obj = ResourceManager.GetObject("success11", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace DFPS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap warning {
+        internal static System.Drawing.Bitmap warning11 {
             get {
-                object obj = ResourceManager.GetObject("warning", resourceCulture);
+                object obj = ResourceManager.GetObject("warning11", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
