@@ -33,6 +33,10 @@ namespace DFPS
             {
                 message += "Invalid file. Please select an existed file." + System.Environment.NewLine;
             }
+            if(!FormUtility.validateFileExtension(txtFileDecompress.Text, 4 , ".dfl"))
+            {
+                message += "File type is invalid. Only file with .dfl is accepted.";
+            }
 
             if (message != "")
             {
@@ -78,6 +82,8 @@ namespace DFPS
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Title = "Select File";
+            ofd.Filter = "Deflate Compressed (*.dfl)|*.dfl";
+
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 FileInfo fi = new FileInfo(ofd.FileName);
