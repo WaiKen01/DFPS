@@ -58,15 +58,19 @@ namespace DFPS
             this.txtConPassword = new System.Windows.Forms.TextBox();
             this.btnHide = new System.Windows.Forms.Button();
             this.lblPasswordTips = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtFileCover
             // 
+            this.txtFileCover.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtFileCover.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.txtFileCover.Location = new System.Drawing.Point(44, 36);
             this.txtFileCover.Name = "txtFileCover";
-            this.txtFileCover.Size = new System.Drawing.Size(214, 27);
+            this.txtFileCover.Size = new System.Drawing.Size(225, 27);
             this.txtFileCover.TabIndex = 0;
             // 
             // label1
@@ -87,7 +91,7 @@ namespace DFPS
             this.btnBrowseCover.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBrowseCover.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnBrowseCover.ForeColor = System.Drawing.Color.White;
-            this.btnBrowseCover.Location = new System.Drawing.Point(258, 36);
+            this.btnBrowseCover.Location = new System.Drawing.Point(269, 36);
             this.btnBrowseCover.Name = "btnBrowseCover";
             this.btnBrowseCover.Size = new System.Drawing.Size(90, 27);
             this.btnBrowseCover.TabIndex = 2;
@@ -104,9 +108,9 @@ namespace DFPS
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(44, 73);
+            this.panel1.Location = new System.Drawing.Point(44, 89);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(304, 125);
+            this.panel1.Size = new System.Drawing.Size(315, 125);
             this.panel1.TabIndex = 4;
             // 
             // lblModifiedCover
@@ -184,9 +188,9 @@ namespace DFPS
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.label10);
-            this.panel2.Location = new System.Drawing.Point(388, 73);
+            this.panel2.Location = new System.Drawing.Point(388, 89);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(304, 125);
+            this.panel2.Size = new System.Drawing.Size(315, 125);
             this.panel2.TabIndex = 6;
             // 
             // lblModifiedSecret
@@ -262,7 +266,7 @@ namespace DFPS
             this.btnBrowseSecret.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBrowseSecret.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnBrowseSecret.ForeColor = System.Drawing.Color.White;
-            this.btnBrowseSecret.Location = new System.Drawing.Point(602, 36);
+            this.btnBrowseSecret.Location = new System.Drawing.Point(613, 36);
             this.btnBrowseSecret.Name = "btnBrowseSecret";
             this.btnBrowseSecret.Size = new System.Drawing.Size(90, 27);
             this.btnBrowseSecret.TabIndex = 7;
@@ -283,9 +287,11 @@ namespace DFPS
             // 
             // txtFileSecret
             // 
+            this.txtFileSecret.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtFileSecret.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.txtFileSecret.Location = new System.Drawing.Point(388, 36);
             this.txtFileSecret.Name = "txtFileSecret";
-            this.txtFileSecret.Size = new System.Drawing.Size(214, 27);
+            this.txtFileSecret.Size = new System.Drawing.Size(226, 27);
             this.txtFileSecret.TabIndex = 9;
             // 
             // label12
@@ -293,7 +299,7 @@ namespace DFPS
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.label12.Location = new System.Drawing.Point(44, 204);
+            this.label12.Location = new System.Drawing.Point(44, 220);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(204, 20);
             this.label12.TabIndex = 10;
@@ -301,9 +307,11 @@ namespace DFPS
             // 
             // txtDest
             // 
-            this.txtDest.Location = new System.Drawing.Point(44, 230);
+            this.txtDest.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtDest.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.txtDest.Location = new System.Drawing.Point(44, 246);
             this.txtDest.Name = "txtDest";
-            this.txtDest.Size = new System.Drawing.Size(554, 27);
+            this.txtDest.Size = new System.Drawing.Size(570, 27);
             this.txtDest.TabIndex = 11;
             // 
             // btnBrowseDest
@@ -313,7 +321,7 @@ namespace DFPS
             this.btnBrowseDest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBrowseDest.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnBrowseDest.ForeColor = System.Drawing.Color.White;
-            this.btnBrowseDest.Location = new System.Drawing.Point(598, 230);
+            this.btnBrowseDest.Location = new System.Drawing.Point(609, 246);
             this.btnBrowseDest.Name = "btnBrowseDest";
             this.btnBrowseDest.Size = new System.Drawing.Size(94, 27);
             this.btnBrowseDest.TabIndex = 12;
@@ -326,7 +334,7 @@ namespace DFPS
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.label5.Location = new System.Drawing.Point(44, 263);
+            this.label5.Location = new System.Drawing.Point(44, 279);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(118, 20);
             this.label5.TabIndex = 13;
@@ -334,10 +342,12 @@ namespace DFPS
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(44, 289);
+            this.txtPassword.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.txtPassword.Location = new System.Drawing.Point(44, 305);
             this.txtPassword.MaxLength = 16;
             this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(554, 27);
+            this.txtPassword.Size = new System.Drawing.Size(570, 27);
             this.txtPassword.TabIndex = 14;
             // 
             // label6
@@ -345,7 +355,7 @@ namespace DFPS
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.label6.Location = new System.Drawing.Point(44, 319);
+            this.label6.Location = new System.Drawing.Point(44, 335);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(141, 20);
             this.label6.TabIndex = 15;
@@ -353,10 +363,12 @@ namespace DFPS
             // 
             // txtConPassword
             // 
-            this.txtConPassword.Location = new System.Drawing.Point(44, 345);
+            this.txtConPassword.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtConPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.txtConPassword.Location = new System.Drawing.Point(44, 361);
             this.txtConPassword.MaxLength = 16;
             this.txtConPassword.Name = "txtConPassword";
-            this.txtConPassword.Size = new System.Drawing.Size(554, 27);
+            this.txtConPassword.Size = new System.Drawing.Size(570, 27);
             this.txtConPassword.TabIndex = 16;
             // 
             // btnHide
@@ -366,7 +378,7 @@ namespace DFPS
             this.btnHide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnHide.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnHide.ForeColor = System.Drawing.Color.White;
-            this.btnHide.Location = new System.Drawing.Point(44, 382);
+            this.btnHide.Location = new System.Drawing.Point(44, 398);
             this.btnHide.Name = "btnHide";
             this.btnHide.Size = new System.Drawing.Size(142, 32);
             this.btnHide.TabIndex = 17;
@@ -379,11 +391,33 @@ namespace DFPS
             this.lblPasswordTips.AutoSize = true;
             this.lblPasswordTips.Font = new System.Drawing.Font("Segoe UI", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point);
             this.lblPasswordTips.ForeColor = System.Drawing.Color.White;
-            this.lblPasswordTips.Location = new System.Drawing.Point(275, 319);
+            this.lblPasswordTips.Location = new System.Drawing.Point(291, 335);
             this.lblPasswordTips.Name = "lblPasswordTips";
             this.lblPasswordTips.Size = new System.Drawing.Size(323, 17);
             this.lblPasswordTips.TabIndex = 18;
             this.lblPasswordTips.Text = "Recommended password length is 12-16 characters";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.label7.Location = new System.Drawing.Point(44, 74);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(129, 20);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "Cover file details:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.label13.Location = new System.Drawing.Point(388, 74);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(132, 20);
+            this.label13.TabIndex = 20;
+            this.label13.Text = "Secret file details:";
             // 
             // hideForm
             // 
@@ -391,6 +425,8 @@ namespace DFPS
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(198)))));
             this.ClientSize = new System.Drawing.Size(765, 477);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.lblPasswordTips);
             this.Controls.Add(this.btnHide);
             this.Controls.Add(this.txtConPassword);
@@ -410,7 +446,7 @@ namespace DFPS
             this.Controls.Add(this.txtFileCover);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "hideForm";
-            this.Text = "hideForm";
+            this.Text = "s";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -451,5 +487,7 @@ namespace DFPS
         private System.Windows.Forms.TextBox txtConPassword;
         private System.Windows.Forms.Button btnHide;
         private System.Windows.Forms.Label lblPasswordTips;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label13;
     }
 }

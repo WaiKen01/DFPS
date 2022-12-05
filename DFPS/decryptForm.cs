@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.IO;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace DFPS
 {
@@ -25,6 +26,7 @@ namespace DFPS
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Title = "Select File";
+            ofd.Filter = "Encrypted files (*.enc)|*.enc";
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 FileInfo fi = new FileInfo(ofd.FileName);
@@ -47,13 +49,21 @@ namespace DFPS
             FormUtility.disableButton(btnDecrypt);
             string messageTitle = "";
             string message = "";
-            if (!validateDestination())
+            if (!FormUtility.validateDestination(txtDestination.Text.Trim()))
             {
                 message += "Invalid destination. Please select an existed directory." + System.Environment.NewLine;
             }
-            if (!validateFileExisted())
+            if (!FormUtility.validateFileExisted(txtFilePath.Text.Trim()))
             {
                 message += "Invalid file. Please select an existed file." + System.Environment.NewLine;
+            }
+            if(!FormUtility.validateFileExtension(txtFilePath.Text, 4,".enc"))
+            {
+                message += "Invalid file type. Please select a file with .enc as file extension." + System.Environment.NewLine;
+            }
+            if (FormUtility.validateIfEmpty(txtPassword.Text.Trim()))
+            {
+                message += "Password is empty. Please enter the password to decrypt." + System.Environment.NewLine;
             }
 
             if (message != "")
@@ -66,19 +76,38 @@ namespace DFPS
                 FileInfo file = new FileInfo(txtFilePath.Text);
                 string pass = txtPassword.Text;
                 string destPath = txtDestination.Text;
-                if(AESEncryption.Decrypt(pass, file, destPath))
+                Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
+                string outFile = AESEncryption.Decrypt(pass, file, destPath);
+
+                if (!String.IsNullOrEmpty(outFile))
                 {
+                    string tmpFile = outFile;
+                    FileInfo dcmpFile = new FileInfo(tmpFile);
+                    if (dcmpFile.Extension.Equals(".dfl"))
+                    {
+                        outFile = DeflateCompression.Decompression(dcmpFile, destPath);
+                        File.Delete(dcmpFile.FullName);
+                    }
+                    
+                    stopwatch.Stop();
+                    TimeSpan ts = stopwatch.Elapsed;
+
                     if (!checkRemain.Checked)
                     {
                         File.Delete(file.FullName);
                     }
+                    StringBuilder msg = new StringBuilder();
+                    FileInfo outputFile = new FileInfo(outFile);
                     messageTitle = "Successful Decrypted";
-                    message = "File has been successfully decrypted. Please check your file at " + destPath + "folder";
+                    msg.AppendFormat("File has been successfully decrypted." + System.Environment.NewLine +
+                        "Decrypted file named: {0}" + System.Environment.NewLine +
+                        "Used time: {1:00}:{2:00}:{3:00}.{4}", outputFile.Name, ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds);
                     clearForm();
                     lblModified.Text = "";
                     lblSize.Text = "";
                     lblType.Text = "";
-                    DFPS.DFPSMessageBox.ShowBox(messageTitle, message, true);
+                    DFPS.DFPSMessageBox.ShowBox(messageTitle, msg.ToString(), true);
                 }
                 else
                 {
@@ -88,14 +117,6 @@ namespace DFPS
                 }
             }
             FormUtility.reactivateButton(btnDecrypt);
-        }
-        private bool validateDestination()
-        {
-            return System.IO.Directory.Exists(txtDestination.Text) && txtDestination.Text != "";
-        }
-        private bool validateFileExisted()
-        {
-            return System.IO.File.Exists(txtFilePath.Text) && txtDestination.Text != "";
         }
         private void clearForm()
         {

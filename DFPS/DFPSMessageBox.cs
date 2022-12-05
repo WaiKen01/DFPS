@@ -53,6 +53,5 @@ namespace DFPS
         {
             newMessageBox.Dispose();
         }
-
     }
 }

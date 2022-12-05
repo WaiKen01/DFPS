@@ -47,6 +47,7 @@ namespace DFPS
             this.label1 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.checkRemain = new System.Windows.Forms.CheckBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,7 +58,7 @@ namespace DFPS
             this.btnDecrypt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDecrypt.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnDecrypt.ForeColor = System.Drawing.Color.White;
-            this.btnDecrypt.Location = new System.Drawing.Point(44, 354);
+            this.btnDecrypt.Location = new System.Drawing.Point(44, 368);
             this.btnDecrypt.Name = "btnDecrypt";
             this.btnDecrypt.Size = new System.Drawing.Size(142, 32);
             this.btnDecrypt.TabIndex = 23;
@@ -67,7 +68,9 @@ namespace DFPS
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(44, 317);
+            this.txtPassword.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.txtPassword.Location = new System.Drawing.Point(44, 331);
             this.txtPassword.MaxLength = 16;
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(554, 27);
@@ -78,7 +81,7 @@ namespace DFPS
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.label6.Location = new System.Drawing.Point(44, 291);
+            this.label6.Location = new System.Drawing.Point(44, 305);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(121, 20);
             this.label6.TabIndex = 19;
@@ -91,7 +94,7 @@ namespace DFPS
             this.btnBrowseFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBrowseFolder.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.btnBrowseFolder.ForeColor = System.Drawing.Color.White;
-            this.btnBrowseFolder.Location = new System.Drawing.Point(598, 258);
+            this.btnBrowseFolder.Location = new System.Drawing.Point(598, 272);
             this.btnBrowseFolder.Name = "btnBrowseFolder";
             this.btnBrowseFolder.Size = new System.Drawing.Size(94, 27);
             this.btnBrowseFolder.TabIndex = 18;
@@ -101,7 +104,9 @@ namespace DFPS
             // 
             // txtDestination
             // 
-            this.txtDestination.Location = new System.Drawing.Point(44, 258);
+            this.txtDestination.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtDestination.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.txtDestination.Location = new System.Drawing.Point(44, 272);
             this.txtDestination.Name = "txtDestination";
             this.txtDestination.Size = new System.Drawing.Size(554, 27);
             this.txtDestination.TabIndex = 17;
@@ -111,7 +116,7 @@ namespace DFPS
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            this.label5.Location = new System.Drawing.Point(44, 232);
+            this.label5.Location = new System.Drawing.Point(44, 246);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(200, 20);
             this.label5.TabIndex = 16;
@@ -126,7 +131,7 @@ namespace DFPS
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(44, 101);
+            this.panel1.Location = new System.Drawing.Point(44, 115);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(330, 125);
             this.panel1.TabIndex = 15;
@@ -214,6 +219,8 @@ namespace DFPS
             // 
             // txtFilePath
             // 
+            this.txtFilePath.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.txtFilePath.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             this.txtFilePath.Location = new System.Drawing.Point(44, 37);
             this.txtFilePath.Name = "txtFilePath";
             this.txtFilePath.Size = new System.Drawing.Size(554, 27);
@@ -253,12 +260,24 @@ namespace DFPS
             this.checkRemain.Text = "Yes";
             this.checkRemain.UseVisualStyleBackColor = true;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            this.label8.Location = new System.Drawing.Point(43, 100);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(147, 20);
+            this.label8.TabIndex = 26;
+            this.label8.Text = "Selected file details:";
+            // 
             // decryptForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(198)))));
             this.ClientSize = new System.Drawing.Size(765, 477);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.checkRemain);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.btnDecrypt);
@@ -302,5 +321,6 @@ namespace DFPS
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.CheckBox checkRemain;
+        private System.Windows.Forms.Label label8;
     }
 }

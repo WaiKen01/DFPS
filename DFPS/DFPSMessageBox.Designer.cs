@@ -49,7 +49,7 @@ namespace DFPS
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(510, 170);
+            this.panel1.Size = new System.Drawing.Size(510, 211);
             this.panel1.TabIndex = 0;
             // 
             // panel3
@@ -57,7 +57,7 @@ namespace DFPS
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(166)))), ((int)(((byte)(166)))), ((int)(((byte)(166)))));
             this.panel3.Controls.Add(this.lblMessageTitle);
             this.panel3.Controls.Add(this.iconBox);
-            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Location = new System.Drawing.Point(3, 2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(504, 46);
             this.panel3.TabIndex = 0;
@@ -87,9 +87,9 @@ namespace DFPS
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(198)))), ((int)(((byte)(198)))), ((int)(((byte)(198)))));
             this.panel2.Controls.Add(this.btnOK);
             this.panel2.Controls.Add(this.lblMessage);
-            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Location = new System.Drawing.Point(3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(504, 164);
+            this.panel2.Size = new System.Drawing.Size(504, 165);
             this.panel2.TabIndex = 0;
             // 
             // btnOK
@@ -113,7 +113,7 @@ namespace DFPS
             this.lblMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lblMessage.ForeColor = System.Drawing.Color.White;
             this.lblMessage.Location = new System.Drawing.Point(9, 52);
-            this.lblMessage.MaximumSize = new System.Drawing.Size(480, 80);
+            this.lblMessage.MaximumSize = new System.Drawing.Size(480, 100);
             this.lblMessage.Name = "lblMessage";
             this.lblMessage.Size = new System.Drawing.Size(52, 18);
             this.lblMessage.TabIndex = 0;

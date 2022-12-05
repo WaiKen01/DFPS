@@ -7,6 +7,7 @@ using System.Text;
 using System.IO;
 using System.Windows.Forms;
 using System.Linq;
+using System.Diagnostics;
 
 namespace DFPS
 {
@@ -66,11 +67,17 @@ namespace DFPS
                 FileInfo secretFile = new FileInfo(txtFileSecret.Text);
                 string pass = txtConPassword.Text.Trim();
                 string dest = txtDest.Text;
-
-                if (Steganography.Hide(secretFile, coverFile, pass, dest))
+                Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
+                string outFile = Steganography.Hide(secretFile, coverFile, pass, dest);
+                if (!String.IsNullOrEmpty(outFile))
                 {
+                    stopwatch.Stop();
+                    TimeSpan ts = stopwatch.Elapsed;
+                    StringBuilder msg = new StringBuilder();
                     messageTitle = "Successful Hiding";
-                    message = "A new file has been generated sucessfully.";
+                    msg.AppendFormat("New file: {0} has been generated with embedded content." + System.Environment.NewLine +
+                        "Used time: {1:00}:{2:00}:{3:00}.{4}", outFile, ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds);
                     clearForm();
                     lblModifiedCover.Text = "";
                     lblSizeCover.Text = "";
@@ -78,7 +85,7 @@ namespace DFPS
                     lblModifiedSecret.Text = "";
                     lblSizeSecret.Text = "";
                     lblTypeSecret.Text = "";
-                    DFPS.DFPSMessageBox.ShowBox(messageTitle, message, true);
+                    DFPS.DFPSMessageBox.ShowBox(messageTitle, msg.ToString(), true);
                 }
                 else
                 {
@@ -94,7 +101,7 @@ namespace DFPS
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Title = "Select File";
-            ofd.Filter = "Image Files (*.bmp; *.jpg; *.png)| *.bmp; *.jpg; *.png | PDF Files (*.pdf) | *.pdf";
+            ofd.Filter = "Image and Media Files(*.BMP;*.JPG;*.GIF;*.PNG;*.PDF;*.MOV;*.MP4;*.WAV;*.MP3)|*.BMP;*.JPG;*.GIF;*.PNG;*.PDF;*.MOV;*.MP4;*.WAV;*.MP3";
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 FileInfo fi = new FileInfo(ofd.FileName);

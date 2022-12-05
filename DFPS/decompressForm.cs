@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.IO;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace DFPS
 {
@@ -42,15 +43,32 @@ namespace DFPS
             {
                 FileInfo file = new FileInfo(txtFileDecompress.Text);
                 string dest = txtDest.Text;
-                if (DeflateCompression.Decompression(file, dest))
+                Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
+                string outFile = DeflateCompression.Decompression(file, dest);
+                if (!String.IsNullOrEmpty(outFile))
                 {
+                    if (!checkRemain.Checked)
+                    {
+                        File.Delete(file.FullName);
+                    }
+                    stopwatch.Stop();
+                    TimeSpan ts = stopwatch.Elapsed;
+                    StringBuilder msg = new StringBuilder();
                     messageTitle = "Successful Decompression";
-                    message = "File has been returned to its original form.";
-                    DFPS.DFPSMessageBox.ShowBox(messageTitle, message, true);
+                    msg.AppendFormat("File has been returned to its original form: {0}" + System.Environment.NewLine +
+                        "Used time: {1:00}:{2:00}:{3:00}.{4}",outFile, ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds);
+                    DFPS.DFPSMessageBox.ShowBox(messageTitle, msg.ToString(), true);
                     clearForm();
                     lblModified.Text = "";
                     lblSize.Text = "";
                     lblType.Text = "";
+                }
+                else
+                {
+                    messageTitle = "Failed Decompression";
+                    message = "File is not decompressed. Please try again.";
+                    DFPS.DFPSMessageBox.ShowBox(messageTitle, message, false);
                 }
             }
             FormUtility.reactivateButton(btnDecompress);

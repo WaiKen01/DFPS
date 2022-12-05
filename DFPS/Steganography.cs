@@ -8,7 +8,7 @@ namespace DFPS
 {
     public static class Steganography
     {
-        public static bool Hide(FileInfo secretFile, FileInfo coverFile, string pass, string destinationPath)
+        public static string Hide(FileInfo secretFile, FileInfo coverFile, string pass, string destinationPath)
         {
             byte[] secretFileBytes = File.ReadAllBytes(secretFile.FullName);
             string secretFileType = secretFile.Extension;
@@ -21,21 +21,25 @@ namespace DFPS
                 var cipherBytesWithIdBlock = cipherBytes.Concat(AESEncryption.EncryptByte(generatedIDBlock, pass)).ToArray();
                 string outFile = Path.Combine(destinationPath, coverFile.Name);
                 File.WriteAllBytes(outFile, coverFileBytes.Concat(cipherBytesWithIdBlock).ToArray());
-                return true;
+                File.Delete(secretFile.FullName);
+                return outFile;
             } 
             catch (Exception ex)
             {
-                return false;
+                return null;
             }
         }
 
-        public static bool Extract(FileInfo stegoFile, string pass, string destinationPath)
+        public static string Extract(FileInfo stegoFile, string pass, string destinationPath)
         {
             var stegoFileBytes = File.ReadAllBytes(stegoFile.FullName);
             try
             {
                 var retrievedIdBlockString = Encoding.ASCII.GetString(AESEncryption.DecryptByte(stegoFileBytes.Skip(stegoFileBytes.Length - 128).ToArray(), pass)).Split('|');
-                if (retrievedIdBlockString.Length != 3) throw new Exception("File is corrupted or invalid");
+                if (retrievedIdBlockString.Length != 3)
+                {
+                    return "corrupted";
+                }
                 var retrievedHash = retrievedIdBlockString[0];
                 var hiddenFileType = retrievedIdBlockString[1].ToLower();
                 var keyIndex = Convert.ToInt32(retrievedIdBlockString[2]);
@@ -44,22 +48,18 @@ namespace DFPS
                 var retrievedCipherBytes = retrievedCipherBytesWithIdBlock.Take(retrievedCipherBytesWithIdBlock.Length - 128).ToArray();
 
                 var retrievedSecretBytes = AESEncryption.DecryptByte(retrievedCipherBytes, pass);
-                if (retrievedHash != SHA256Hash.generateHash(retrievedSecretBytes)) throw new Exception("File has been modified");
-
-                try
+                if (retrievedHash != SHA256Hash.generateHash(retrievedSecretBytes))
                 {
-                    string secretFile = Path.Combine(destinationPath, Path.ChangeExtension("TOPSECRET", hiddenFileType));
-                    File.WriteAllBytes(secretFile, retrievedSecretBytes);
-                    return true;
+                    return "modified";
                 }
-                catch (Exception ex)
-                {
-                    return false;
-                }
+    
+                string outFile = Path.Combine(destinationPath, Path.ChangeExtension(DateTime.Now.ToString("yyyyMMddHHmmss"), hiddenFileType));
+                File.WriteAllBytes(outFile, retrievedSecretBytes);
+                return outFile;
             }
             catch(Exception ex)
             {
-                return false;
+                return null;
             }
         }
 

@@ -19,6 +19,15 @@ namespace DFPS
         {
             return System.IO.File.Exists(filePath) && filePath != "";
         }
+
+        public static bool validateFileExtension(string fileName, int length, string ext)
+        {
+            if (getLast(fileName, length).Equals(ext))
+            {
+                return true;
+            }
+            return false;
+        }
         public static bool validateIfEmpty(string str)
         {
             return string.IsNullOrEmpty(str);
@@ -28,13 +37,23 @@ namespace DFPS
             return str.Length >= min && str.Length <= max;
         }
 
+        public static string getLast(string str, int length)
+        {
+            if(str.Length >= length)
+            {
+                return str.Substring(str.Length - length);
+            }
+            return null;
+        }
+
         public static string fileSize (long size)
         {
             int sizeCheck = 0;
             string sizeWord = "Byte";
-            for (int i = 0; size >= 1024; i++)
+            double sizeD = Convert.ToDouble(size);
+            for (int i = 0; sizeD >= 1024; i++)
             {
-                size = size / 1024;
+                sizeD = sizeD / 1024;
                 sizeCheck++;
             }
             if (sizeCheck == 1)
@@ -49,7 +68,7 @@ namespace DFPS
             {
                 sizeWord = "GB";
             }
-            return size.ToString() + sizeWord;
+            return sizeD.ToString("0.##") + sizeWord;
         }
 
         public static void disableButton(Button button)

@@ -60,16 +60,22 @@
   <data name="lblStegno.Text" xml:space="preserve">
     <value>Steganography could be used to protect against unauthorized access and detection. 
 File Hiding: A secret file could be hidden into a cover file which will generate a stego file. 
-File Extraction: A secret file could be extracted from the stego file.</value>
+File Extraction: A secret file could be extracted from the stego file.
+Recommended cover file: .png, .jpg, .gif, .bmp, .pdf, .mp3, .wav, .mp4, .mov
+</value>
   </data>
   <data name="lblCompress.Text" xml:space="preserve">
     <value>Data compression could reduce file size and increase file transmission speed.
 File Compression: To reduce a file size by compressing the content
-File Decompression: To return a compressed file to its original form</value>
+File Decompression: To return a compressed file to its original form
+Recommended file type: .txt, .docx, .xlsx, .pdf, .zip
+
+</value>
   </data>
   <data name="lblEncrypt.Text" xml:space="preserve">
     <value>Encryption could be used to protect against unauthorized access.  
 File encryption: To make it unreadable by protecting it with a password. 
-File decryption: To view its content, user must provide a correct password.</value>
+File decryption: To view its content, user must provide a correct password.
+No file type restriction. Larger file would take longer time.</value>
   </data>
 </root>

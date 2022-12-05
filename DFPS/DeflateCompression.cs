@@ -8,7 +8,7 @@ namespace DFPS
 {
     public static class DeflateCompression
     {
-        public static bool Compression(FileInfo file, string dest)
+        public static string Compress(FileInfo file, string dest)
         {
             using FileStream infileStream = File.Open(file.FullName, FileMode.Open);
             string output = Path.Combine(dest, Path.ChangeExtension(file.Name, "dfl"));
@@ -27,17 +27,18 @@ namespace DFPS
                     {
                         infileStream.CopyTo(compressor);
                     }
+                    infileStream.Close();
+                    outFileStream.Close();
                 }
-                return true;
+                return output;
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex);
-                return false;
+                return null;
             }
         }
 
-        public static bool Decompression(FileInfo file, string dest)
+        public static string Decompression(FileInfo file, string dest)
         {
             using (var inFileStream = new FileStream(file.FullName, FileMode.Open))
             {
@@ -68,15 +69,16 @@ namespace DFPS
                             using (var decompressor = new DeflateStream(memoryStream, CompressionMode.Decompress))
                             {
                                 decompressor.CopyTo(outFileStream);
+                                memoryStream.Close();
+                                outFileStream.Close();
                             }
                         }
                     }
-                    return true;
+                    return output;
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex);
-                    return false;
+                    return null;
                 }
             }
         }

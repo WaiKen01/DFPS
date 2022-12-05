@@ -62,7 +62,7 @@ namespace DFPS
             this.lblStegno.Location = new System.Drawing.Point(3, 37);
             this.lblStegno.MaximumSize = new System.Drawing.Size(699, 96);
             this.lblStegno.Name = "lblStegno";
-            this.lblStegno.Size = new System.Drawing.Size(694, 69);
+            this.lblStegno.Size = new System.Drawing.Size(694, 92);
             this.lblStegno.TabIndex = 2;
             this.lblStegno.Text = resources.GetString("lblStegno.Text");
             // 
@@ -95,7 +95,7 @@ namespace DFPS
             this.lblCompress.Location = new System.Drawing.Point(3, 37);
             this.lblCompress.MaximumSize = new System.Drawing.Size(699, 96);
             this.lblCompress.Name = "lblCompress";
-            this.lblCompress.Size = new System.Drawing.Size(595, 69);
+            this.lblCompress.Size = new System.Drawing.Size(595, 96);
             this.lblCompress.TabIndex = 3;
             this.lblCompress.Text = resources.GetString("lblCompress.Text");
             // 
@@ -127,7 +127,7 @@ namespace DFPS
             this.lblEncrypt.ForeColor = System.Drawing.Color.White;
             this.lblEncrypt.Location = new System.Drawing.Point(3, 37);
             this.lblEncrypt.Name = "lblEncrypt";
-            this.lblEncrypt.Size = new System.Drawing.Size(576, 69);
+            this.lblEncrypt.Size = new System.Drawing.Size(576, 92);
             this.lblEncrypt.TabIndex = 1;
             this.lblEncrypt.Text = resources.GetString("lblEncrypt.Text");
             // 

@@ -7,6 +7,7 @@ using System.Text;
 using System.IO;
 using System.Windows.Forms;
 using System.Collections;
+using System.Diagnostics;
 
 namespace DFPS
 {
@@ -41,27 +42,44 @@ namespace DFPS
             }
             else
             {
+                Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
+                
                 FileInfo file = new FileInfo(txtFileCompress.Text);
                 string dest = txtDest.Text;
-                if(DeflateCompression.Compression(file, dest))
+                string outFile = DeflateCompression.Compress(file, dest);
+                if (!String.IsNullOrEmpty(outFile))
                 {
+                    //Console.WriteLine("Elapsed Time is {0:00}:{1:00}:{2:00}.{3}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds);
                     string oriSize = FormUtility.fileSize(file.Length);
-                    string outFile = Path.Combine(dest, Path.ChangeExtension(file.Name, "dfl"));
                     FileInfo cmpFile = new FileInfo(outFile);
                     string cmpSize = FormUtility.fileSize(cmpFile.Length);
                     StringBuilder str = new StringBuilder();
                     long savedSpace = file.Length - cmpFile.Length;
                     string saved = FormUtility.fileSize(savedSpace);
+                    if (!checkRemain.Checked)
+                    {
+                        File.Delete(file.FullName);
+                    }
+                    stopwatch.Stop();
+                    TimeSpan ts = stopwatch.Elapsed;
                     messageTitle = "Successful Compression";
                     str.AppendFormat("A compressed file has been generated " + System.Environment.NewLine +
                         "Original File Size     : {0}  " + System.Environment.NewLine +
                         "Compressed File Size   : {1} " + System.Environment.NewLine +
-                        "Saved Space : {2}", oriSize, cmpSize, saved);
+                        "Used time: {2:00}:{3:00}:{4:00}.{5}" + System.Environment.NewLine +
+                        "Saved Space : {6}", oriSize, cmpSize, ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds, saved);
                     DFPS.DFPSMessageBox.ShowBox(messageTitle, str.ToString(), true);
                     clearForm();
                     lblModified.Text = "";
                     lblSize.Text = "";
                     lblType.Text = "";
+                }
+                else
+                {
+                    messageTitle = "Failed Compression";
+                    message = "File is not compressed. Please try again.";
+                    DFPS.DFPSMessageBox.ShowBox(messageTitle, message, false);
                 }
             }
             FormUtility.reactivateButton(btnCompress);

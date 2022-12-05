@@ -10,7 +10,7 @@ namespace DFPS
 {
     public static class AESEncryption
     {
-        public static bool Encrypt(string pass, FileInfo file, string destinationPath)
+        public static string Encrypt(string pass, FileInfo file, string destinationPath)
         {
             Aes aes = Aes.Create();
             //generate salt for hashing
@@ -42,7 +42,7 @@ namespace DFPS
                 //Output File Stream
                 using (var outFileStream = new FileStream(outputFile, FileMode.Create))
                 {
-                    //Write Key length + IV length + ExtLength + Salt + IV + HashedExt
+                    //Write salt length + IV length + ExtLength + Salt + IV + HashedExt + Encrypted Content
                     outFileStream.Write(saltLengthByte, 0, 4);
                     outFileStream.Write(ivLengthByte, 0, 4);
                     outFileStream.Write(extLengthByte, 0, 4);
@@ -78,16 +78,15 @@ namespace DFPS
                         outCryptoStream.FlushFinalBlock();
                     }
                 }
-
-                return true;
+                return outputFile;
             }
             catch (Exception ex)
             {
-                return false;
+                return null;
             } 
         }
 
-        public static bool Decrypt(string pass, FileInfo file, string destinationPath)
+        public static string Decrypt(string pass, FileInfo file, string destinationPath)
         {
             Aes aes = Aes.Create();
 
@@ -118,7 +117,7 @@ namespace DFPS
                     int startOfCipher = saltLength + ivLength + extLength + 12;
                     //determine length of content
                     int lengthOfContent = (int)inFileStream.Length - startOfCipher;
-
+                    
                     byte[] salt = new byte[saltLength];
                     byte[] iv = new byte[ivLength];
                     byte[] hashedExt = new byte[extLength];
@@ -183,7 +182,30 @@ namespace DFPS
                     {
                         ext = ".pptx";
                     }
-
+                    else if (SHA256Hash.compareHash(".mp4", salt, hashedExt))
+                    {
+                        ext = ".mp4";
+                    }
+                    else if (SHA256Hash.compareHash(".gif", salt, hashedExt))
+                    {
+                        ext = ".gif";
+                    }
+                    else if (SHA256Hash.compareHash(".svg", salt, hashedExt))
+                    {
+                        ext = ".svg";
+                    }
+                    else if (SHA256Hash.compareHash(".html", salt, hashedExt))
+                    {
+                        ext = ".html";
+                    }
+                    else if (SHA256Hash.compareHash(".mov", salt, hashedExt))
+                    {
+                        ext = ".mov";
+                    }
+                    else if (SHA256Hash.compareHash(".wav", salt, hashedExt))
+                    {
+                        ext = ".wav";
+                    }
 
                     string outFile = Path.Combine(destinationPath, Path.ChangeExtension(file.Name, ext));
                     ICryptoTransform transform = aes.CreateDecryptor(hashedkey, iv);
@@ -210,19 +232,19 @@ namespace DFPS
                                 } while (count > 0);
                                 outputCryptoStream.FlushFinalBlock();
                             }
-                            return true;
+                            return outFile;
                         }
                         catch (Exception ex)
                         {
                             File.Delete(outFile);
-                            return false;
+                            return null;
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                return false;
+                return null;
             }
         }
 
@@ -316,6 +338,7 @@ namespace DFPS
                 return randomBytes;
             }
         }
+
 
         public static T[] SubArray<T>(this T[] data, int index, int length)
         {

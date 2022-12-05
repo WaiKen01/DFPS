@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Text;
@@ -72,7 +73,7 @@ namespace DFPS
 
             if (message != "")
             {
-                messageTitle = "Invalid input detected";
+                messageTitle = "Invalid input detected.";
                 DFPS.DFPSMessageBox.ShowBox(messageTitle, message, false);
             }
             else
@@ -80,23 +81,42 @@ namespace DFPS
                 FileInfo file = new FileInfo(txtFilePath.Text);
                 string pass = txtPassword.Text;
                 string destPath = txtDestination.Text;
-                if (AESEncryption.Encrypt(pass, file, destPath))
+                Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
+                string outFile = "";
+                if (checkCompress.Checked)
+                {
+                    FileInfo compressedFile = new FileInfo(DeflateCompression.Compress(file, destPath));
+                    outFile = AESEncryption.Encrypt(pass, compressedFile, destPath);
+                    stopwatch.Stop();
+                    //File.Delete(compressedFile.FullName);
+                }
+                else
+                {
+                    outFile = AESEncryption.Encrypt(pass, file, destPath);
+                    stopwatch.Stop();
+                }
+
+                if (!String.IsNullOrEmpty(outFile))
                 {
                     if (!checkRemain.Checked)
                     {
                         File.Delete(file.FullName);
                     }
-                    string newFileName = Path.Combine(destPath, Path.ChangeExtension(file.Name, "enc"));
+                    TimeSpan ts = stopwatch.Elapsed;
+                    StringBuilder msg = new StringBuilder();
                     messageTitle = "Successful Encrypted";
-                    message = "Encrypted file has been generated : " + newFileName;
+                    msg.AppendFormat("Encrypted file has been generated : {0}" + System.Environment.NewLine +
+                        "Used time: {1:00}:{2:00}:{3:00}.{4}", outFile, ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds);
                     clearForm();
                     lblModified.Text = "";
                     lblSize.Text = "";
                     lblType.Text = "";
-                    DFPS.DFPSMessageBox.ShowBox(messageTitle, message, true);
+                    DFPS.DFPSMessageBox.ShowBox(messageTitle, msg.ToString(), true);
                 }
                 else
                 {
+                    stopwatch.Stop();
                     messageTitle = "Failed to encrypt";
                     message = "File is not encrypted. Please try again.";
                     clearForm();

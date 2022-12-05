@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.IO;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace DFPS
 {
@@ -47,18 +48,41 @@ namespace DFPS
             }
             else
             {
+
                 FileInfo stegoFile = new FileInfo(txtFileExtract.Text);
                 string pass = txtPassword.Text.Trim();
                 string dest = txtDest.Text;
-                if (Steganography.Extract(stegoFile, pass, dest))
+                Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
+                string outFile = Steganography.Extract(stegoFile, pass, dest);
+                if (!String.IsNullOrEmpty(outFile))
                 {
-                    messageTitle = "Successful Extraction";
-                    message = "A new file has extracted sucessfully.";
-                    clearForm();
-                    lblSize.Text = "";
-                    lblType.Text = "";
-                    lblModified.Text = "";
-                    DFPS.DFPSMessageBox.ShowBox(messageTitle, message, true);
+                    if (outFile.Equals("corrupted"))
+                    {
+                        messageTitle = "Failed Extraction";
+                        message = "The file is corrupted. No content is extracted.";
+                        DFPS.DFPSMessageBox.ShowBox(messageTitle, message, false);
+                    }
+                    else if (outFile.Equals("modified"))
+                    {
+                        messageTitle = "Failed Extraction";
+                        message = "The file is modified. No content is extracted";
+                        DFPS.DFPSMessageBox.ShowBox(messageTitle, message, false);
+                    }
+                    else
+                    {
+                        stopwatch.Stop();
+                        TimeSpan ts = stopwatch.Elapsed;
+                        StringBuilder msg = new StringBuilder();
+                        messageTitle = "Successful Extraction";
+                        msg.AppendFormat("Extracted content have been saved in a new file." + System.Environment.NewLine +
+                            "Used time: {0:00}:{1:00}:{2:00}.{3}", ts.Hours, ts.Minutes, ts.Seconds, ts.Milliseconds);
+                        clearForm();
+                        lblSize.Text = "";
+                        lblType.Text = "";
+                        lblModified.Text = "";
+                        DFPS.DFPSMessageBox.ShowBox(messageTitle, msg.ToString(), true);
+                    }
                 }
                 else
                 {
@@ -74,7 +98,6 @@ namespace DFPS
         {
             OpenFileDialog ofd = new OpenFileDialog();
             ofd.Title = "Select File";
-            ofd.Filter = "Image Files (*.bmp; *.jpg; *.png)| *.bmp; *.jpg; *.png | PDF Files (*.pdf) | *.pdf";
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 FileInfo fi = new FileInfo(ofd.FileName);
