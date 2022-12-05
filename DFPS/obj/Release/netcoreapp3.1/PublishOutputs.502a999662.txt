@@ -1,0 +1,5 @@
+D:\FYP DFPS\DFPS\DFPS\DFPS\bin\Release\netcoreapp3.1\publish\DFPS.exe
+D:\FYP DFPS\DFPS\DFPS\DFPS\bin\Release\netcoreapp3.1\publish\DFPS.dll
+D:\FYP DFPS\DFPS\DFPS\DFPS\bin\Release\netcoreapp3.1\publish\DFPS.deps.json
+D:\FYP DFPS\DFPS\DFPS\DFPS\bin\Release\netcoreapp3.1\publish\DFPS.runtimeconfig.json
+D:\FYP DFPS\DFPS\DFPS\DFPS\bin\Release\netcoreapp3.1\publish\DFPS.pdb

@@ -47,7 +47,7 @@ namespace DFPS
                 var hiddenFileType = retrievedIdBlockString[1].ToLower();
                 var keyIndex = Convert.ToInt32(retrievedIdBlockString[2]);
 
-                //retrieve Cipher Bytes  + ID block
+                //retrieve Cipher Bytes
                 var retrievedCipherBytesWithIdBlock = stegoFileBytes.Skip(keyIndex).ToArray();
                 var retrievedCipherBytes = retrievedCipherBytesWithIdBlock.Take(retrievedCipherBytesWithIdBlock.Length - 128).ToArray();
                 

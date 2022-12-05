@@ -206,6 +206,10 @@ namespace DFPS
                     {
                         ext = ".wav";
                     }
+                    else
+                    {
+                        return null;
+                    }
 
                     string outFile = Path.Combine(destinationPath, Path.ChangeExtension(file.Name, ext));
                     ICryptoTransform transform = aes.CreateDecryptor(hashedkey, iv);
