@@ -34,10 +34,11 @@ namespace DFPS
             {
                 message += "Invalid file. Please select an existed file." + System.Environment.NewLine;
             }
-            if(FormUtility.validateFileExtension(txtFileCompress.Text, 4,".dfl")||FormUtility.validateFileExtension(txtFileCompress.Text, 4, ".zip"))
+            else if (FormUtility.validateFileExtension(txtFileCompress.Text, 4, ".dfl") || FormUtility.validateFileExtension(txtFileCompress.Text, 4, ".zip"))
             {
                 message += "File is compressed. Please other file." + System.Environment.NewLine;
             }
+
 
             if (message != "")
             {

@@ -333,7 +333,7 @@ namespace DFPS
 
         private static byte [] generateBytes()
         {
-            //generate 128bits byte
+            //generate 128bits 
             var randomBytes = new byte[16];
             using (var rng = RandomNumberGenerator.Create())
             {
